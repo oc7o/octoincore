@@ -1,8 +1,9 @@
-import requests
 import typing
-from requests import Session
 from decimal import Decimal
-from octoincore.config.models import ServerSettings
+
+import requests
+from django.conf import settings
+from requests import Session
 
 
 class BTCPayClient:
@@ -12,7 +13,17 @@ class BTCPayClient:
     default_store_id: str
     default_currency: str
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        token: str,
+        btcpay_instance: str,
+        default_store_id: str,
+        default_currency: str,
+    ) -> None:
+        self.token = token
+        self.btcpay_instance = btcpay_instance
+        self.default_store_id = default_store_id
+        self.default_currency = default_currency
         self.client = Session()
         self.client.headers["Content-Type"] = "application/json"
         self.client.headers["Authorization"] = "token " + self.token
@@ -20,22 +31,30 @@ class BTCPayClient:
     def get_stores(self):
         return self.client.get(self.btcpay_instance + "/api/v1/stores").json()
 
-    def get_store(self, storeId: str = default_store_id):
+    def get_store(self, storeId: str = None):
+        if storeId is None:
+            storeId = self.default_store_id
         return self.client.get(
             self.btcpay_instance + "/api/v1/stores/" + storeId
         ).json()
 
-    def get_invoices(self, storeId: str = default_store_id):
+    def get_invoices(self, storeId: str = None):
+        if storeId is None:
+            storeId = self.default_store_id
         return self.client.get(
             self.btcpay_instance + f"/api/v1/stores/{storeId}/invoices"
         ).json()
 
-    def get_invoice(self, invoiceId: str, storeId: str = default_store_id):
+    def get_invoice(self, invoiceId: str, storeId: str = None):
+        if storeId is None:
+            storeId = self.default_store_id
         return self.client.get(
             self.btcpay_instance + f"/api/v1/stores/{storeId}/invoices/{invoiceId}"
         ).json()
 
-    def create_invoice(self, amount: Decimal, storeId: str = default_store_id):
+    def create_invoice(self, amount: Decimal, storeId: str = None):
+        if storeId is None:
+            storeId = self.default_store_id
         data = {
             "checkout": {
                 "speedPolicy": "HighSpeed",  # "Highspeed": 0, "MediumSpeed": 1, "LowMediumSpeed": 2, "LowSpeed": 6
@@ -44,7 +63,7 @@ class BTCPayClient:
                 "expirationMinutes": 60 * 24,
                 "monitoringMinutes": 60 * 24,
                 "paymentTolerance": 100,
-                "redirectURL": "https://google.com/",  # https://sloow.de/
+                "redirectURL": "https://localhost:5173/checkout/done",  # TODO: https://sloow.de/
                 "redirectAutomatically": True,
                 "requiresRefundEmail": False,
                 "defaultLanguage": "en-US",
@@ -63,18 +82,18 @@ class BTCPayClient:
         #     "string"
         # ]
         """
+
         return self.client.post(
             self.btcpay_instance + f"/api/v1/stores/{storeId}/invoices", json=data
         ).json()
 
 
 def get_btcpay_client():
-    client = BTCPayClient()
-    client_data = ServerSettings.objects
-    client.token = client_data.get("btcpay_token")
-    client.btcpay_instance = client_data.get("btcpay_instance")
-    client.default_store_id = client_data.get(
-        "default_store_id"
-    )  # "4LV39Ej2XB3zb9VTfstnyGJ1dBgGa5ndjqYoJUsEoqNq"
-    client.default_currency = client_data.get("default_currency")
-
+    print(settings.BTCPAY_SERVER_URL)
+    client = BTCPayClient(
+        token=settings.BTCPAY_TOKEN,
+        btcpay_instance=settings.BTCPAY_SERVER_URL,
+        default_store_id=settings.BTCPAY_STORE_ID,
+        default_currency=settings.BTCPAY_CURRENCY,
+    )  # "EUR"
+    return client

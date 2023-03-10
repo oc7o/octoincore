@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from .models import BTCPayClientStore, Order, OrderProductInventory
+from .models import Order, OrderInvoice
 
-admin.site.register(BTCPayClientStore)
 admin.site.register(Order)
-admin.site.register(OrderProductInventory)
+admin.site.register(OrderInvoice)

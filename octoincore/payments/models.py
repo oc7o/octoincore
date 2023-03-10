@@ -1,8 +1,8 @@
 from django.db import models
 
-# from picklefield.fields import PickledObjectField
+from octoincore.basket.models import Basket
 
-from octoincore.inventory.models import ProductInventory
+# from picklefield.fields import PickledObjectField
 
 
 # class BTCPayClientStore(models.Model):
@@ -17,27 +17,30 @@ from octoincore.inventory.models import ProductInventory
 
 
 class Order(models.Model):
+    firstname = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100)
+    email = models.EmailField()
     street = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     zip_code = models.CharField(max_length=100)
 
+    basket = models.OneToOneField(
+        Basket, on_delete=models.CASCADE, related_name="order"
+    )
 
-class OrderProductInventory(models.Model):
-    order = models.ForeignKey(
-        Order, on_delete=models.CASCADE, related_name="order_product_inventories"
-    )
-    product_inventory = models.ForeignKey(
-        ProductInventory, on_delete=models.PROTECT, related_name="orders"
-    )
-    quantity = models.IntegerField()
+    created_at = models.DateTimeField(auto_now=True)
+    # expired_at = models.DateTimeField()
 
 
 class OrderInvoice(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="invoices")
+    order = models.OneToOneField(
+        Order, on_delete=models.CASCADE, related_name="invoice"
+    )
     invoice_id = models.CharField(max_length=255)
     invoice_url = models.URLField()
     # status = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    paid = models.BooleanField(default=False)
     # created_at = models.DateTimeField()
     # expired_at = models.DateTimeField()
     # currency = models.CharField(max_length=255)
