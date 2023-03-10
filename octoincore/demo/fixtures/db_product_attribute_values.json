@@ -1,0 +1,12 @@
+[
+  {
+    "model": "inventory.productattributevalues",
+    "pk": 1,
+    "fields": { "attributevalues": 1, "productinventory": 1 }
+  },
+  {
+    "model": "inventory.productattributevalues",
+    "pk": 2,
+    "fields": { "attributevalues": 2, "productinventory": 2 }
+  }
+]

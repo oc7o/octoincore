@@ -1,0 +1,64 @@
+[
+  {
+    "model": "inventory.producttype",
+    "pk": 6,
+    "fields": { "name": "Smart Watch" }
+  },
+  {
+    "model": "inventory.producttype",
+    "pk": 7,
+    "fields": { "name": "Analog Watch" }
+  },
+  {
+    "model": "inventory.producttype",
+    "pk": 8,
+    "fields": { "name": "In-Ear Headphones" }
+  },
+  {
+    "model": "inventory.producttype",
+    "pk": 9,
+    "fields": { "name": "Over-Ear Headphones" }
+  },
+  {
+    "model": "inventory.producttype",
+    "pk": 10,
+    "fields": { "name": "Lip Stick" }
+  },
+  {
+    "model": "inventory.producttype",
+    "pk": 11,
+    "fields": { "name": "Sun Glasses" }
+  },
+  {
+    "model": "inventory.producttype",
+    "pk": 12,
+    "fields": { "name": "Camera" }
+  },
+  { "model": "inventory.producttype", "pk": 13, "fields": { "name": "Shoe" } },
+  { "model": "inventory.producttype", "pk": 14, "fields": { "name": "Stool" } },
+  { "model": "inventory.producttype", "pk": 15, "fields": { "name": "Plant" } },
+  { "model": "inventory.producttype", "pk": 16, "fields": { "name": "Toy" } },
+  {
+    "model": "inventory.producttype",
+    "pk": 17,
+    "fields": { "name": "Bottle" }
+  },
+  {
+    "model": "inventory.producttype",
+    "pk": 18,
+    "fields": { "name": "Coffee" }
+  },
+  {
+    "model": "inventory.producttype",
+    "pk": 19,
+    "fields": { "name": "Shower Gel" }
+  },
+  {
+    "model": "inventory.producttype",
+    "pk": 20,
+    "fields": { "name": "Gaming Accessoire" }
+  },
+  { "model": "inventory.producttype", "pk": 21, "fields": { "name": "Deko" } },
+  { "model": "inventory.producttype", "pk": 22, "fields": { "name": "Phone" } },
+  { "model": "inventory.producttype", "pk": 23, "fields": { "name": "Other" } }
+]

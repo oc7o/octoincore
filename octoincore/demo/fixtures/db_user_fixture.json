@@ -1,0 +1,135 @@
+[
+  {
+    "model": "users.extenduser",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$ta1aEuzxYNXDapypcK8DeA$9SSsiimsWiGYWn9XK6SMWfhAvkzUVPMazswSBMCeDc4=",
+      "last_login": "2023-02-24T22:37:39Z",
+      "is_superuser": true,
+      "username": "karl",
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-02-24T22:36:27Z",
+      "email": "karl@sloow.de",
+      "profile_image": "defaults/profile_images/4.jpg",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.extenduser",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$ta1aEuzxYNXDapypcK8DeA$9SSsiimsWiGYWn9XK6SMWfhAvkzUVPMazswSBMCeDc4=",
+      "last_login": "2023-02-27T18:27:39Z",
+      "is_superuser": false,
+      "username": "sabine",
+      "first_name": "Sabine",
+      "last_name": "Meyer",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-27T18:27:28Z",
+      "email": "sabine@sloow.de",
+      "profile_image": "defaults/profile_images/6.jpg",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.extenduser",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$ta1aEuzxYNXDapypcK8DeA$9SSsiimsWiGYWn9XK6SMWfhAvkzUVPMazswSBMCeDc4=",
+      "last_login": "2023-02-27T18:28:24Z",
+      "is_superuser": false,
+      "username": "otto",
+      "first_name": "Otto",
+      "last_name": "Melzer",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-27T18:28:19Z",
+      "email": "otto@sloow.de",
+      "profile_image": "defaults/profile_images/1.jpg",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.extenduser",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$ta1aEuzxYNXDapypcK8DeA$9SSsiimsWiGYWn9XK6SMWfhAvkzUVPMazswSBMCeDc4=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "iyvonne",
+      "first_name": "Iyvonne",
+      "last_name": "Meier",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-27T18:29:23Z",
+      "email": "iyvonne@sloow.de",
+      "profile_image": "defaults/profile_images/3.jpg",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.extenduser",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$ta1aEuzxYNXDapypcK8DeA$9SSsiimsWiGYWn9XK6SMWfhAvkzUVPMazswSBMCeDc4=",
+      "last_login": "2023-02-27T18:32:17Z",
+      "is_superuser": false,
+      "username": "hendrik",
+      "first_name": "Hendrik",
+      "last_name": "Mayer",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-27T18:32:09Z",
+      "email": "hendrik@sloow.de",
+      "profile_image": "defaults/profile_images/2.jpg",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.extenduser",
+    "pk": 7,
+    "fields": {
+      "password": "Igor",
+      "last_login": "2023-02-27T18:32:58Z",
+      "is_superuser": false,
+      "username": "igor",
+      "first_name": "Igor",
+      "last_name": "Meiyr",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-27T18:32:38Z",
+      "email": "igor@sloow.de",
+      "profile_image": "defaults/profile_images/7.jpg",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.extenduser",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$ta1aEuzxYNXDapypcK8DeA$9SSsiimsWiGYWn9XK6SMWfhAvkzUVPMazswSBMCeDc4=",
+      "last_login": "2023-02-27T18:33:48Z",
+      "is_superuser": false,
+      "username": "hans",
+      "first_name": "Hans",
+      "last_name": "Maier",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-27T18:33:41Z",
+      "email": "hans@sloow.de",
+      "profile_image": "defaults/profile_images/5.jpg",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "model": "inventory.productattributevalue",
+    "pk": 1,
+    "fields": { "product_attribute": 1, "attribute_value": "Dark" }
+  },
+  {
+    "model": "inventory.productattributevalue",
+    "pk": 2,
+    "fields": { "product_attribute": 1, "attribute_value": "Bright" }
+  }
+]
