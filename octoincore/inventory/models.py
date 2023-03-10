@@ -1,6 +1,10 @@
+from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from mptt.models import MPTTModel, TreeForeignKey, TreeManyToManyField
+
+# from octoincore.inventory.schema import ProductType
+from octoincore.users.models import ExtendUser
 
 ################
 ### Managers ###
@@ -37,9 +41,7 @@ class Category(MPTTModel):
         unique=False,
         blank=False,
         verbose_name=_("category safe URL"),
-        help_text=_(
-            "format: required, letters, numbers, underscore or hyphens"
-        ),
+        help_text=_("format: required, letters, numbers, underscore or hyphens"),
     )
 
     is_active = models.BooleanField(default=True)
@@ -71,6 +73,10 @@ class Product(models.Model):
     Product details table
     """
 
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="products"
+    )
+
     web_id = models.CharField(
         max_length=50,
         unique=True,
@@ -85,9 +91,7 @@ class Product(models.Model):
         null=False,
         blank=False,
         verbose_name=_("product safe URL"),
-        help_text=_(
-            "format: required, letters, numbers, underscores or hyphens"
-        ),
+        help_text=_("format: required, letters, numbers, underscores or hyphens"),
     )
     name = models.CharField(
         max_length=255,
@@ -192,6 +196,9 @@ class Brand(models.Model):
         help_text=_("format: required, unique, max-255"),
     )
 
+    def __str__(self):
+        return self.name
+
 
 class ProductAttributeValue(models.Model):
     """
@@ -243,9 +250,14 @@ class ProductInventory(models.Model):
     product = models.ForeignKey(
         Product, related_name="product", on_delete=models.PROTECT
     )
-    brand = models.ForeignKey(
-        Brand, related_name="brand", on_delete=models.PROTECT
+    describing_keyword = models.CharField(
+        blank=True,
+        null=True,
+        max_length=255,
+        verbose_name=_("keyword describing product"),
+        help_text=_("max-255"),
     )
+    brand = models.ForeignKey(Brand, related_name="brand", on_delete=models.PROTECT)
     attribute_values = models.ManyToManyField(
         ProductAttributeValue,
         related_name="product_attribute_values",
@@ -274,7 +286,7 @@ class ProductInventory(models.Model):
                 "max_length": _("the price must be between 0 and 999.99."),
             },
         },
-    )
+    )  # Preis den unsere Kunden an uns bezahlen müssen
     store_price = models.DecimalField(
         max_digits=5,
         decimal_places=2,
@@ -288,7 +300,7 @@ class ProductInventory(models.Model):
                 "max_length": _("the price must be between 0 and 999.99."),
             },
         },
-    )
+    )  # Preis den wir dafür bezahlen
     sale_price = models.DecimalField(
         max_digits=5,
         decimal_places=2,
@@ -324,7 +336,10 @@ class ProductInventory(models.Model):
     # products = ProductInventoryManager()
 
     def __str__(self):
-        return self.product.name
+        return f"{self.product.name}: {self.describing_keyword}"
+
+    class Meta:
+        unique_together = ("product", "describing_keyword")
 
 
 class Media(models.Model):
@@ -370,6 +385,9 @@ class Media(models.Model):
         verbose_name=_("date sub-product created"),
         help_text=_("format: Y-m-d H:M:S"),
     )
+
+    def __str__(self):
+        return self.alt_text
 
     class Meta:
         verbose_name = _("product image")
@@ -422,6 +440,9 @@ class ProductAttributeValues(models.Model):
         related_name="productattributevalues",
         on_delete=models.PROTECT,
     )
+
+    def __str__(self) -> str:
+        return f"{self.attributevalues} - {self.productinventory}"
 
     class Meta:
         unique_together = (("attributevalues", "productinventory"),)
