@@ -14,6 +14,10 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -54,11 +58,11 @@ INSTALLED_APPS = [
     "mptt",
     # "mathfilters",
     # local apps
-    "octoincore.config",
     "octoincore.users",
     "octoincore.dashboard",
     "octoincore.inventory",
     "octoincore.payments",
+    "octoincore.basket",
     "octoincore.demo",
     "octoincore.captcha",
 ]
@@ -117,9 +121,15 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+    },
 ]
 
 
@@ -185,4 +195,7 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 ### BTCPAY SERVER ###
 #####################
 
-CURRENCY = "EUR"
+BTCPAY_TOKEN = os.environ.get("BTCPAY_TOKEN", "")
+BTCPAY_SERVER_URL = os.environ.get("BTCPAY_SERVER_URL", "")
+BTCPAY_STORE_ID = os.environ.get("BTCPAY_STORE_ID", "")
+BTCPAY_CURRENCY = "EUR"

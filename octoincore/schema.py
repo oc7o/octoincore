@@ -12,6 +12,7 @@ from strawberry.types import ExecutionContext
 from strawberry_django_jwt import exceptions
 from strawberry_django_jwt.middleware import JSONWebTokenMiddleware
 
+from octoincore.basket.schema import BasketMutation, BasketQuery
 from octoincore.captcha.schema import CaptchaMutation
 from octoincore.dashboard.schema import DashboardQuery
 from octoincore.inventory.models import Product
@@ -45,10 +46,10 @@ class MyJSONWebTokenMiddleware(JSONWebTokenMiddleware):
 
 
 Query = merge_types(
-    "RootQuery", (UserQuery, DashboardQuery, InventoryQuery, PaymentsQuery,)
+    "RootQuery", (UserQuery, DashboardQuery, InventoryQuery, PaymentsQuery, BasketQuery)
 )
 Mutation = merge_types(
-    "RootMutation", (UserMutations, PaymentsMutation, CaptchaMutation,)
+    "RootMutation", (UserMutations, PaymentsMutation, CaptchaMutation, BasketMutation)
 )
 
 schema = MySchema(
