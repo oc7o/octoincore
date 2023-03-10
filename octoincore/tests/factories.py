@@ -39,7 +39,7 @@ class ProductFactory(factory.django.DjangoModelFactory):
 
 class ProductTypeFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = models.ProductType
+        model = models.Product
 
     name = factory.Sequence(lambda n: "type_%d" % n)
 
@@ -112,12 +112,10 @@ class ProductAttributeValuesFactory(factory.django.DjangoModelFactory):
 
 class ProductWithAttributeValuesFactory(ProductInventoryFactory):
     attributevalues1 = factory.RelatedFactory(
-        ProductAttributeValuesFactory,
-        factory_related_name="productinventory",
+        ProductAttributeValuesFactory, factory_related_name="productinventory",
     )
     attributevalues2 = factory.RelatedFactory(
-        ProductAttributeValuesFactory,
-        factory_related_name="productinventory",
+        ProductAttributeValuesFactory, factory_related_name="productinventory",
     )
 
 
