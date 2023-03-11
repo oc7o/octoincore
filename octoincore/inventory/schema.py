@@ -27,6 +27,52 @@ if typing.TYPE_CHECKING:
     from .schema import ProductType
 
 
+GenericType = typing.TypeVar("GenericType")
+
+
+@strawberry.type
+class PaginationWindow(typing.List[GenericType]):
+    items: typing.List[GenericType] = strawberry.field(
+        description="The list of items in this pagination window."
+    )
+
+    total_items_count: int = strawberry.field(
+        description="Total number of items in the filtered dataset."
+    )
+
+
+def get_pagination_window(
+    dataset: typing.List[GenericType],
+    ItemType: type,
+    limit: int,
+    offset: int = 0,
+    filters: dict[str, str] = {},
+) -> PaginationWindow:
+    """
+    Get one pagination window on the given dataset for the given limit
+    and offset, ordered by the given attribute and filtered using the
+    given filters
+    """
+
+    if limit <= 0 or limit > 100:
+        raise Exception(f"limit ({limit}) must be between 0-100")
+
+    # TODO: replace with django-filters
+    # if filters:
+    #     dataset = list(filter(lambda x: matches(x, filters), dataset))
+    if "user" in filters.keys():
+        dataset = dataset.filter(owner__username=filters["user"])
+
+    if offset != 0 and not 0 <= offset < len(dataset):
+        raise Exception(f"offset ({offset}) is out of range " f"(0-{len(dataset) - 1})")
+
+    total_items_count = len(dataset)
+
+    items = dataset[offset : offset + limit]
+
+    return PaginationWindow(items=items, total_items_count=total_items_count)
+
+
 @strawberry.django.type(model=ProductAttribute)
 class ProductAttributeType:
     name: str
@@ -125,9 +171,42 @@ class ProductType:
 class InventoryQuery:
     # products: typing.List[ProductType] = strawberry.django.field()
 
+    # @strawberry.field
+    # def products(
+    #     self,
+    #     info: strawberry.types.Info,
+    #     user: str | None = None,
+    #     search: str | None = None,
+    #     category: str | None = None,
+    # ) -> typing.List[ProductType]:
+    #     return Product.objects.all()
+
     @strawberry.field
-    def products(self, info: strawberry.types.Info) -> typing.List[ProductType]:
-        return Product.objects.all()
+    def products(
+        self,
+        info: strawberry.types.Info,
+        user: str | None = None,
+        search: str | None = None,
+        category: str | None = None,
+        limit: int = 20,
+        offset: int = 0,
+    ) -> PaginationWindow[ProductType]:
+        filters = {}
+        print(user)
+        if user is not None:
+            filters["user"] = user
+        if search is not None:
+            filters["search"] = search
+        if category is not None:
+            filters["category"] = category
+
+        return get_pagination_window(
+            dataset=Product.objects.all(),
+            ItemType=ProductType,
+            limit=limit,
+            offset=offset,
+            filters=filters,
+        )
 
     @strawberry.field
     def product_by_web_id(
