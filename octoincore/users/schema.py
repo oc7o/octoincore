@@ -88,6 +88,21 @@ class UserQuery:
             )
         return top_user_types
 
+    @strawberry.field
+    def user(self, info, username: str) -> UserType:
+        user = ExtendUser.objects.get(username=username)
+        return UserType(
+            username=user.username,
+            isStaff=user.is_staff,
+            isActive=user.is_active,
+            isSuperuser=user.is_superuser,
+            dateJoined=user.date_joined,
+            profileImage=info.context.request.build_absolute_uri(
+                user.profile_image.url
+            ),
+            products=user.products.all(),
+        )
+
 
 @strawberry.type
 class UserMutations:
