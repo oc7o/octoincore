@@ -1,5 +1,1 @@
-# OctopusInterface
- 🐙💻
-
-
-Memo for myself: `pip list --format=freeze > requirements.txt`
+See in parent repo: https://github.com/oc7o/OctopusInterface
