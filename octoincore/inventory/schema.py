@@ -63,6 +63,9 @@ def get_pagination_window(
     if "user" in filters.keys():
         dataset = dataset.filter(owner__username=filters["user"])
 
+    if "search" in filters.keys():
+        dataset = dataset.filter(name__icontains=filters["search"])
+
     if offset != 0 and not 0 <= offset < len(dataset):
         raise Exception(f"offset ({offset}) is out of range " f"(0-{len(dataset) - 1})")
 
@@ -192,7 +195,6 @@ class InventoryQuery:
         offset: int = 0,
     ) -> PaginationWindow[ProductType]:
         filters = {}
-        print(user)
         if user is not None:
             filters["user"] = user
         if search is not None:
