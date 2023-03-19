@@ -1,9 +1,11 @@
 import datetime
 import typing
+import uuid
 from decimal import Decimal
 
 import strawberry
 from django.conf import settings
+from django.contrib.auth import get_user_model
 
 from octoincore.types import JSON
 from octoincore.users.models import ExtendUser
@@ -65,6 +67,9 @@ def get_pagination_window(
 
     if "search" in filters.keys():
         dataset = dataset.filter(name__icontains=filters["search"])
+
+    if "is_active" in filters.keys():
+        dataset = dataset.filter(is_active=filters["is_active"])
 
     if offset != 0 and not 0 <= offset < len(dataset):
         raise Exception(f"offset ({offset}) is out of range " f"(0-{len(dataset) - 1})")
@@ -152,7 +157,10 @@ class ProductType:
 
     @strawberry.field
     def starting_from_price(self, info) -> Decimal:
-        minimal_price = self.product.order_by("store_price").first().store_price
+        if self.product.order_by("store_price").first() is not None:
+            minimal_price = self.product.order_by("store_price").first().store_price
+        else:
+            minimal_price = Decimal(0)
         return minimal_price
 
     @strawberry.field
@@ -201,6 +209,7 @@ class InventoryQuery:
             filters["search"] = search
         if category is not None:
             filters["category"] = category
+        filters["is_active"] = True
 
         return get_pagination_window(
             dataset=Product.objects.all(),
@@ -209,6 +218,33 @@ class InventoryQuery:
             offset=offset,
             filters=filters,
         )
+
+    @strawberry.field
+    def me_products(
+        self,
+        info: strawberry.types.Info,
+        limit: int = 20,
+        offset: int = 0,
+    ) -> PaginationWindow[ProductType] | None:
+        if info.context.request.user.is_authenticated:
+            filters = {}
+            filters["user"] = info.context.request.user.username
+
+            return get_pagination_window(
+                dataset=Product.objects.all(),
+                ItemType=ProductType,
+                limit=limit,
+                offset=offset,
+                filters=filters,
+            )
+        raise Exception("User is not authenticated")
+
+    @strawberry.field
+    def categories(
+        self,
+        info: strawberry.types.Info,
+    ) -> typing.List[CategoryType]:
+        return Category.objects.all()
 
     @strawberry.field
     def product_by_web_id(
@@ -233,3 +269,26 @@ class InventoryQuery:
         self, info: strawberry.types.Info, skus: typing.List[str]
     ) -> typing.List[ProductInventoryType]:
         return ProductInventory.objects.filter(sku__in=skus)
+
+
+@strawberry.type
+class InventoryMutation:
+    @strawberry.mutation
+    def create_product(
+        self,
+        info: strawberry.types.Info,
+        name: str,
+        description: str,
+        category: str,
+    ) -> ProductType:
+        if info.context.request.user.is_authenticated:
+            product = Product.objects.create(
+                name=name,
+                description=description,
+                is_active=False,
+                web_id=uuid.uuid4().hex[:16],
+                owner=info.context.request.user,
+            )
+            product.category.add(Category.objects.get(slug=category))
+            return product
+        raise Exception("User is not authenticated")

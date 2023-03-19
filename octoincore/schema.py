@@ -16,7 +16,7 @@ from octoincore.basket.schema import BasketMutation, BasketQuery
 from octoincore.captcha.schema import CaptchaMutation
 from octoincore.dashboard.schema import DashboardQuery
 from octoincore.inventory.models import Product
-from octoincore.inventory.schema import InventoryQuery
+from octoincore.inventory.schema import InventoryMutation, InventoryQuery
 from octoincore.payments.schema import PaymentsMutation, PaymentsQuery
 from octoincore.users.schema import UserMutations, UserQuery
 
@@ -49,10 +49,20 @@ Query = merge_types(
     "RootQuery", (UserQuery, DashboardQuery, InventoryQuery, PaymentsQuery, BasketQuery)
 )
 Mutation = merge_types(
-    "RootMutation", (UserMutations, PaymentsMutation, CaptchaMutation, BasketMutation)
+    "RootMutation",
+    (
+        UserMutations,
+        InventoryMutation,
+        PaymentsMutation,
+        CaptchaMutation,
+        BasketMutation,
+    ),
 )
 
 schema = MySchema(
-    query=Query, mutation=Mutation, extensions=[MyJSONWebTokenMiddleware,],
+    query=Query,
+    mutation=Mutation,
+    extensions=[
+        MyJSONWebTokenMiddleware,
+    ],
 )
-
