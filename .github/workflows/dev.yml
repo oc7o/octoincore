@@ -1,6 +1,6 @@
 name: dev
 run-name: Dev Server
-on: [push]
+on: [push, workflow_dispatch]
 jobs:
   check-bats-version:
     runs-on: self-hosted
