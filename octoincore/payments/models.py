@@ -2,6 +2,8 @@ from django.db import models
 
 from octoincore.basket.models import Basket
 
+# from octoincore.users.models import ExtendUser
+
 # from picklefield.fields import PickledObjectField
 
 
@@ -17,12 +19,28 @@ from octoincore.basket.models import Basket
 
 
 class Order(models.Model):
+    # owner = models.ForeignKey(
+    #     ExtendUser, on_delete=models.PROTECT, related_name="orders", null=True
+    # )
+    code = models.CharField(max_length=255, unique=True)
     firstname = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
     email = models.EmailField()
     street = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     zip_code = models.CharField(max_length=100)
+
+    status = models.CharField(
+        max_length=255,
+        default="new",
+        choices=[
+            ("unknown", "unknown"),
+            ("new", "new"),
+            ("paid", "paid"),
+            ("shipped", "shipped"),
+            ("canceled", "canceled"),
+        ],
+    )
 
     basket = models.OneToOneField(
         Basket, on_delete=models.CASCADE, related_name="order"

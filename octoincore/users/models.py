@@ -15,6 +15,9 @@ class ExtendUser(AbstractUser):
         null=True,
         default="defaults/profile_image.png",
     )
+    balance = models.DecimalField(
+        max_digits=10, decimal_places=5, default=0, verbose_name="balence"
+    )
 
     def products_sold_this_month_count(self):
         return OrderInvoice.objects.filter(

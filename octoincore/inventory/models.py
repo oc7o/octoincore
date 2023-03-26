@@ -239,8 +239,8 @@ class ProductInventory(models.Model):
     upc = models.CharField(
         max_length=12,
         unique=True,
-        null=False,
-        blank=False,
+        null=True,  # False
+        blank=True,  # False
         verbose_name=_("universal product code"),
         help_text=_("format: required, unique, max-12"),
     )
@@ -257,7 +257,14 @@ class ProductInventory(models.Model):
         verbose_name=_("keyword describing product"),
         help_text=_("max-255"),
     )
-    brand = models.ForeignKey(Brand, related_name="brand", on_delete=models.PROTECT)
+    brand = models.ForeignKey(
+        Brand,
+        related_name="brand",
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True,
+        default=None,
+    )
     attribute_values = models.ManyToManyField(
         ProductAttributeValue,
         related_name="product_attribute_values",
@@ -277,8 +284,8 @@ class ProductInventory(models.Model):
         max_digits=5,
         decimal_places=2,
         unique=False,
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
         verbose_name=_("recommended retail price"),
         help_text=_("format: maximum price 999.99"),
         error_messages={
@@ -305,8 +312,8 @@ class ProductInventory(models.Model):
         max_digits=5,
         decimal_places=2,
         unique=False,
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
         verbose_name=_("sale price"),
         help_text=_("format: maximum price 999.99"),
         error_messages={
@@ -317,8 +324,8 @@ class ProductInventory(models.Model):
     )
     weight = models.FloatField(
         unique=False,
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
         verbose_name=_("product weight"),
     )
     created_at = models.DateTimeField(
@@ -364,8 +371,8 @@ class Media(models.Model):
     alt_text = models.CharField(
         max_length=255,
         unique=False,
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
         verbose_name=_("alternative text"),
         help_text=_("format: required, max-255"),
     )
