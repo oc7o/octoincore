@@ -1,5 +1,6 @@
 import datetime
 import typing
+from decimal import Decimal
 from typing import List, Optional
 
 import strawberry
@@ -24,9 +25,10 @@ class MeType:
     isSuperuser: bool
     lastName: str
     firstName: str
-    dateJoined: datetime.datetime
-    lastLogin: datetime.datetime
+    dateJoined: datetime.datetime | None
+    lastLogin: datetime.datetime | None
     profileImage: str
+    balance: Decimal
 
 
 @strawberry.django.type(model=ExtendUser)
@@ -60,6 +62,7 @@ class UserQuery:
                 profileImage=info.context.request.build_absolute_uri(
                     info.context.request.user.profile_image.url
                 ),
+                balance=info.context.request.user.balance,
             )
         return None
 
