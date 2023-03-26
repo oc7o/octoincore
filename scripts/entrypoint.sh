@@ -11,10 +11,7 @@ python manage.py makemigrations --noinput
 echo "Apply database migrations"
 python manage.py migrate
 
-#echo "Creating superuser"
-#echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', '', 'admin')" | python manage.py shell
-
-if [ $DEBUG = 1 ]
+if [ "$ENV" == "dev" ]
 then
   echo "Running Development"
   python manage.py runserver 0.0.0.0:8000
