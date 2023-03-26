@@ -1,5 +1,6 @@
 import datetime
 import typing
+import uuid
 
 import strawberry
 from django.conf import settings
@@ -70,6 +71,7 @@ class OrderType:
     street: str
     city: str
     zip_code: str
+    status: str
 
     basket: BasketType
     invoice: OrderInvoiceType
@@ -84,6 +86,10 @@ class PaymentsQuery:
     @strawberry.field
     def invoices(self, info) -> typing.List[JSON]:
         return get_btcpay_client().get_invoices()
+
+    @strawberry.field
+    def check_order(self, info, code: str) -> OrderType:
+        return Order.objects.get(code=code)
 
     # @strawberry.field
     # def rates(self, info) -> typing.List[str]:
@@ -140,6 +146,7 @@ class PaymentsMutation:
         basket = Basket.objects.get(web_id=basket_web_id)
 
         order = Order()
+        order.order_key = uuid.uuid4()[:12]
         order.firstnmae = firstname
         order.lastname = lastname
         order.city = city
