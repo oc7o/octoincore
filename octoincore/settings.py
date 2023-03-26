@@ -14,10 +14,6 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -30,11 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", "DEFAULT_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-##DEBUG = True
-DEBUG = bool(int(os.environ.get("DEBUG", 1)))
+DEBUG = os.environ.get("ENV", "dev") == "dev"
 
 ALLOWED_HOSTS = []
-# if not DEBUG:
 ALLOWED_HOSTS_ENV = os.environ.get("ALLOWED_HOSTS", "localhost")
 ALLOWED_HOSTS.extend(ALLOWED_HOSTS_ENV.split(","))
 
@@ -50,12 +44,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # third party apps
-    # "strawberry.django",
     "strawberry_django",
     "corsheaders",
     "strawberry_django_jwt.refresh_token",
     "django_filters",
     "mptt",
+    "storages",
     # "mathfilters",
     # local apps
     "octoincore.users",
@@ -105,11 +99,11 @@ WSGI_APPLICATION = "octoincore.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "password",
-        "HOST": "db",
-        "PORT": "5432",
+        "NAME": os.environ.get("POSTGRES_DB"),
+        "USER": os.environ.get("POSTGRES_USER", "postgres"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        "HOST": os.environ.get("POSTGRES_HOST"),
+        "PORT": os.environ.get("POSTGRES_PORT", "5432"),
     }
 }
 
@@ -144,20 +138,44 @@ USE_I18N = True
 
 USE_TZ = True
 
+STORAGE = os.environ.get("STORAGE", "local")
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
+if STORAGE == "local":
+    #####################
+    ### LOCAL STORAGE ###
+    #####################
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
-STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR / "octoincore" / "static"]
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+    # Static files (CSS, JavaScript, Images)
+    # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+    STATIC_ROOT = BASE_DIR / "staticfiles"
+    STATIC_URL = "/static/"
+    STATICFILES_DIRS = [BASE_DIR / "octoincore" / "static"]
+    STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
-# Media files (images, videos, etc.)
+    # Media files (images, videos, etc.)
 
-MEDIA_ROOT = BASE_DIR / "media"
-MEDIA_URL = "/media/"
+    MEDIA_ROOT = BASE_DIR / "media"
+    MEDIA_URL = "/media/"
+
+if STORAGE == "s3":
+    ##############
+    ### AWS S3 ###
+    ##############
+
+    AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+    AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
+    AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]
+    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+    AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
+
+    AWS_DEFAULT_ACL = "public-read"
+    AWS_LOCATION = "static"
+
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
+
+    DEFAULT_FILE_STORAGE = "octoincore.s3utils.MediaRootS3BotoStorage"
+    STATICFILES_STORAGE = "octoincore.s3utils.StaticRootS3BotoStorage"
 
 
 # Default primary key field type
