@@ -9,7 +9,7 @@ jobs:
       - name: Checkout 
         uses: actions/checkout@v3
       - name: Build
-        run: docker build -t octoincore ./octoincore
+        run: docker build -t octoincore .
       - name: Run
         run: docker run -it octoincore -p 8000:8000| -e ENV=dev -e ALLOWED_HOSTS -e STORAGE=s3 -e BTCPAY_TOKEN -e BTCPAY_STORE_ID -e POSTGRES_DB -e POSTGRES_USER -e POSTGRES_PASSWORD -e POSTGRES_HOST -e POSTGRES_PORT -e AWS_STORAGE_BUCKET_NAME -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY
 
