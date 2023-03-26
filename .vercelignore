@@ -1,0 +1,6 @@
+# Ignore everything (folders and files) on root only
+/*
+!octoincore
+!manage.py
+!requirements.txt
+!vercel.json
