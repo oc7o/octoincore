@@ -1,1 +1,1 @@
-web: gunicorn octoincore.asgi:application -k uvicorn.workers.UvicornWorker -b localhost:80
+web: gunicorn octoincore.asgi:application -k uvicorn.workers.UvicornWorker
