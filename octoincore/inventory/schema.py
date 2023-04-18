@@ -111,7 +111,7 @@ class ProductTypeType:
 
 @strawberry.input
 class MediaInputType:
-    img_url: typing.List[Upload]
+    img_url: Upload
 
 
 @strawberry.django.type(model=Category)
@@ -328,7 +328,6 @@ class InventoryMutation:
         attribute_values: JSON | None = None,
     ) -> ProductInventoryType:
         if info.context.request.user.is_authenticated:
-
             product_inventory = ProductInventory()
             product_inventory.product = Product.objects.get(web_id=product)
             product_inventory.sku = uuid.uuid4().hex[:16]
