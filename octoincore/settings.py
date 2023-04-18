@@ -31,6 +31,8 @@ DEBUG = os.environ.get("ENV", "dev") == "dev"
 ALLOWED_HOSTS = []
 ALLOWED_HOSTS_ENV = os.environ.get("ALLOWED_HOSTS", "localhost")
 ALLOWED_HOSTS.extend(ALLOWED_HOSTS_ENV.split(","))
+CSRF_TRUSTED_ORIGINS = []
+CSRF_TRUSTED_ORIGINS.extend(ALLOWED_HOSTS_ENV.split(","))
 
 
 # Application definition
