@@ -31,8 +31,14 @@ DEBUG = os.environ.get("ENV", "dev") == "dev"
 ALLOWED_HOSTS = []
 ALLOWED_HOSTS_ENV = os.environ.get("ALLOWED_HOSTS", "localhost")
 ALLOWED_HOSTS.extend(ALLOWED_HOSTS_ENV.split(","))
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 CSRF_TRUSTED_ORIGINS = []
-CSRF_TRUSTED_ORIGINS.extend(ALLOWED_HOSTS_ENV.split(","))
+CSRF_TRUSTED_ORIGINS_ENV = os.environ.get(
+    "CSRF_TRUSTED_ORIGINS", "https://localhost:8000"
+)
+CSRF_TRUSTED_ORIGINS.extend(CSRF_TRUSTED_ORIGINS_ENV.split(","))
 
 
 # Application definition
