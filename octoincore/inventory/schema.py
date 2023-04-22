@@ -365,3 +365,14 @@ class InventoryMutation:
             #         )
             return product_inventory
         raise Exception("User is not authenticated")
+
+    @strawberry.mutation
+    def delete_product_inventory(
+        self,
+        info: strawberry.types.Info,
+        sku: str,
+    ) -> bool:
+        if info.context.request.user.is_authenticated:
+            ProductInventory.objects.filter(sku=sku).delete()
+            return True
+        raise Exception("User is not authenticated")
