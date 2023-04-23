@@ -10,6 +10,7 @@ from octoincore.basket.schema import BasketType
 from octoincore.captcha.models import Captcha
 from octoincore.inventory.models import ProductInventory
 from octoincore.inventory.schema import ProductInventoryType
+from octoincore.permission import IsAuthenticated
 from octoincore.types import JSON
 
 # from .utils import create_btcpay_client, get_btcpay_client
@@ -91,7 +92,7 @@ class PaymentsQuery:
     def check_order(self, info, code: str) -> OrderType:
         return Order.objects.get(code=code)
 
-    @strawberry.field
+    @strawberry.field(permission_classes=[IsAuthenticated])
     def my_orders(self, info) -> typing.List[OrderType]:
         return Order.objects.filter(
             basket__basket_objects__product_inventory__product__owner=info.context.request.user
