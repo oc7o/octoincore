@@ -94,7 +94,7 @@ class PaymentsQuery:
     @strawberry.field
     def my_orders(self, info) -> typing.List[OrderType]:
         return Order.objects.filter(
-            basket__basket_objects__product_inventory__product__owner=info.context.user
+            basket__basket_objects__product_inventory__product__owner=info.context.request.user
         )
 
     # @strawberry.field
