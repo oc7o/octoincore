@@ -91,6 +91,11 @@ class PaymentsQuery:
     def check_order(self, info, code: str) -> OrderType:
         return Order.objects.get(code=code)
 
+    def my_orders(self, info) -> typing.List[OrderType]:
+        return Order.objects.filter(
+            basket__basket_objects__product_inventory__product__owner=info.context.user
+        )
+
     # @strawberry.field
     # def rates(self, info) -> typing.List[str]:
     #     return get_btcpay_client().get_rate("USD")
@@ -136,7 +141,6 @@ class PaymentsMutation:
         captcha_web_id: str,
         captcha_text: str,
     ) -> OrderType:
-
         captcha = Captcha.objects.get(web_id=captcha_web_id)
         if captcha.captcha != captcha_text:
             captcha.delete()
