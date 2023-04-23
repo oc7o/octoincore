@@ -107,7 +107,7 @@ class PaymentsQuery:
                 ):
                     basket_objects.append(basket_object)
             invoice_type = None
-            if order.invoice:
+            if hasattr(order, "invoice"):
                 invoice_type = (
                     OrderInvoiceType(
                         invoice_id=order.invoice.invoice_id,
