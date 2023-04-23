@@ -9,4 +9,4 @@ class IsAuthenticated(BasePermission):
 
     # This method can also be async!
     def has_permission(self, source: typing.Any, info: Info, **kwargs) -> bool:
-        return info.context.user.is_authenticated
+        return info.context.request.user.is_authenticated
