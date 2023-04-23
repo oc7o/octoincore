@@ -75,7 +75,7 @@ class OrderType:
     status: str
 
     basket: BasketType
-    invoice: OrderInvoiceType
+    invoice: OrderInvoiceType | None
 
 
 @strawberry.type
@@ -106,6 +106,18 @@ class PaymentsQuery:
                     == info.context.request.user
                 ):
                     basket_objects.append(basket_object)
+            invoice_type = None
+            if order.invoice:
+                invoice_type = (
+                    OrderInvoiceType(
+                        invoice_id=order.invoice.invoice_id,
+                        invoice_url=order.invoice.invoice_url,
+                        price=order.invoice.price,
+                        created_at=order.invoice.created_at,
+                        expired_at=order.invoice.expired_at,
+                    ),
+                )
+
             order_type = OrderType(
                 firstname=order.firstname,
                 lastname=order.lastname,
@@ -117,13 +129,7 @@ class PaymentsQuery:
                 basket=BasketType(
                     web_id=order.basket.web_id, basket_objects=basket_objects
                 ),
-                invoice=OrderInvoiceType(
-                    invoice_id=order.invoice.invoice_id,
-                    invoice_url=order.invoice.invoice_url,
-                    price=order.invoice.price,
-                    created_at=order.invoice.created_at,
-                    expired_at=order.invoice.expired_at,
-                ),
+                invoice=invoice_type,
             )
             orders.append(order_type)
 
