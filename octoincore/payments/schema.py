@@ -94,9 +94,40 @@ class PaymentsQuery:
 
     @strawberry.field(permission_classes=[IsAuthenticated])
     def my_orders(self, info) -> typing.List[OrderType]:
-        return Order.objects.filter(
+        orders_query = Order.objects.filter(
             basket__basket_objects__product_inventory__product__owner=info.context.request.user
         )
+        orders = []
+        for order in orders_query:
+            basket_objects = []
+            for basket_object in order.basket.basket_objects.all():
+                if (
+                    basket_object.product_inventory.product.owner
+                    == info.context.request.user
+                ):
+                    basket_objects.append(basket_object)
+            order_type = OrderType(
+                firstname=order.firstname,
+                lastname=order.lastname,
+                email=order.email,
+                street=order.street,
+                city=order.city,
+                zip_code=order.zip_code,
+                status=order.status,
+                basket=BasketType(
+                    web_id=order.basket.web_id, basket_objects=basket_objects
+                ),
+                invoice=OrderInvoiceType(
+                    invoice_id=order.invoice.invoice_id,
+                    invoice_url=order.invoice.invoice_url,
+                    price=order.invoice.price,
+                    created_at=order.invoice.created_at,
+                    expired_at=order.invoice.expired_at,
+                ),
+            )
+            orders.append(order_type)
+
+        return orders
 
     # @strawberry.field
     # def rates(self, info) -> typing.List[str]:
