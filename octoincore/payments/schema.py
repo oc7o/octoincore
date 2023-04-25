@@ -11,7 +11,7 @@ from octoincore.captcha.models import Captcha
 from octoincore.inventory.models import ProductInventory
 from octoincore.inventory.schema import ProductInventoryType
 from octoincore.permission import IsAuthenticated
-from octoincore.types import JSON
+from octoincore.types import JSON  # from strawberry.scalars import JSON
 
 # from .utils import create_btcpay_client, get_btcpay_client
 from .btcpayserver_client import get_btcpay_client
@@ -131,6 +131,7 @@ class PaymentsQuery:
                     web_id=order.basket.web_id, basket_objects=basket_objects
                 ),
                 invoice=invoice_type,
+                created_at=order.created_at,
             )
             orders.append(order_type)
 
