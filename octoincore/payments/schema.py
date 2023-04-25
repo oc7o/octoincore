@@ -73,7 +73,7 @@ class OrderType:
     city: str
     zip_code: str
     status: str
-    created_at: datetime.datetime
+    created_at: datetime.datetime | None
 
     basket: BasketType
     invoice: OrderInvoiceType | None
