@@ -31,6 +31,12 @@ class BasketType:
     total_price: Decimal
     total_qty: int
 
+    @strawberry.field
+    def vendor_basket_objects(self, info) -> typing.List[BasketObjectType]:
+        return BasketObject.objects.filter(
+            product_inventory__product__owner=info.context.request.user,
+        ).all()
+
 
 @strawberry.type
 class BasketQuery:

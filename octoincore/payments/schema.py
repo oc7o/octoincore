@@ -1,6 +1,7 @@
 import datetime
 import typing
 import uuid
+from decimal import Decimal
 
 import strawberry
 from django.conf import settings
@@ -78,6 +79,16 @@ class OrderType:
     basket: BasketType
     invoice: OrderInvoiceType | None
 
+    @strawberry.field
+    def total_price(self, info) -> Decimal:
+        # This is not like basket.total_price() because we want to get the price for the vendor
+        total_price = 0
+        for basket_object in self.basket.basket_objects.all():
+            total_price += (
+                basket_object.product_inventory.store_price * basket_object.quantity
+            )
+        return total_price
+
 
 @strawberry.type
 class PaymentsQuery:
@@ -95,46 +106,9 @@ class PaymentsQuery:
 
     @strawberry.field(permission_classes=[IsAuthenticated])
     def my_orders(self, info) -> typing.List[OrderType]:
-        orders_query = Order.objects.filter(
+        orders = Order.objects.filter(
             basket__basket_objects__product_inventory__product__owner=info.context.request.user
         )
-        orders = []
-        for order in orders_query:
-            basket_objects = []
-            for basket_object in order.basket.basket_objects.all():
-                if (
-                    basket_object.product_inventory.product.owner
-                    == info.context.request.user
-                ):
-                    basket_objects.append(basket_object)
-            invoice_type = None
-            if hasattr(order, "invoice"):
-                invoice_type = (
-                    OrderInvoiceType(
-                        invoice_id=order.invoice.invoice_id,
-                        invoice_url=order.invoice.invoice_url,
-                        price=order.invoice.price,
-                        created_at=order.invoice.created_at,
-                        expired_at=order.invoice.expired_at,
-                    ),
-                )
-
-            order_type = OrderType(
-                firstname=order.firstname,
-                lastname=order.lastname,
-                email=order.email,
-                street=order.street,
-                city=order.city,
-                zip_code=order.zip_code,
-                status=order.status,
-                basket=BasketType(
-                    web_id=order.basket.web_id, basket_objects=basket_objects
-                ),
-                invoice=invoice_type,
-                created_at=order.created_at,
-            )
-            orders.append(order_type)
-
         return orders
 
     # @strawberry.field

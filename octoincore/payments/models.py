@@ -49,6 +49,9 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     # expired_at = models.DateTimeField()
 
+    def __str__(self):
+        return f"{self.status} - {self.code}"
+
 
 class OrderInvoice(models.Model):
     order = models.OneToOneField(
