@@ -83,10 +83,14 @@ class OrderType:
     def total_price(self, info) -> Decimal:
         # This is not like basket.total_price() because we want to get the price for the vendor
         total_price = 0
-        for basket_object in self.basket.vendor_basket_objects.all():
-            total_price += (
-                basket_object.product_inventory.store_price * basket_object.quantity
-            )
+        for basket_object in self.basket.basket_objects.all():
+            if (
+                basket_object.product_inventory.product.owner
+                == info.context.request.user
+            ):
+                total_price += (
+                    basket_object.product_inventory.store_price * basket_object.quantity
+                )
         return total_price
 
 
