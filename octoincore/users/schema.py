@@ -71,7 +71,7 @@ class UserQuery:
     def top_20_users(self, info) -> List[UserType]:
         top_users = sorted(
             ExtendUser.objects.all(),
-            key=lambda x: x.products_sold_this_month_count(),
+            key=lambda x: x.amount_earned_this_month(),
             reverse=True,
         )[:20]
 
