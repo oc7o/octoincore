@@ -1,8 +1,0 @@
-# Ignore everything (folders and files) on root only
-/*
-!octoincore
-!scripts
-!manage.py
-!Pipfile
-
-!vercel.json
