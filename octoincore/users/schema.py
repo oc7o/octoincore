@@ -42,6 +42,7 @@ class UserType:
     products: typing.List[
         typing.Annotated["ProductType", strawberry.lazy("octoincore.inventory.schema")]
     ]
+    amount_earned_this_month: float
 
 
 @strawberry.type
@@ -87,6 +88,7 @@ class UserQuery:
                         user.profile_image.url
                     ),
                     products=user.products.all(),
+                    amount_earned_this_month=user.amount_earned_this_month(),
                 )
             )
         return top_user_types
