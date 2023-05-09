@@ -3,6 +3,9 @@
     "model": "inventory.productinventory",
     "pk": 1,
     "fields": {
+      "web_id": "c8bf35cb-b5d5-441f-8339-bbbc9c83eb60",
+      "created_at": "2023-02-24T22:41:42.751Z",
+      "updated_at": "2023-02-24T22:56:32.725Z",
       "sku": "11111111",
       "upc": "aaaaaaaa",
       "product_type": 7,
@@ -14,15 +17,16 @@
       "retail_price": "40.00",
       "store_price": "700.00",
       "sale_price": "600.00",
-      "weight": 0.2,
-      "created_at": "2023-02-24T22:41:42.751Z",
-      "updated_at": "2023-02-24T22:56:32.725Z"
+      "weight": 0.2
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 2,
     "fields": {
+      "web_id": "9d169552-9ae0-4056-8369-de14bd63fc11",
+      "created_at": "2023-02-24T22:43:54.998Z",
+      "updated_at": "2023-02-24T22:56:25.852Z",
       "sku": "11111112",
       "upc": "aaaaaaab",
       "product_type": 7,
@@ -34,15 +38,16 @@
       "retail_price": "40.00",
       "store_price": "700.00",
       "sale_price": "600.00",
-      "weight": 0.2,
-      "created_at": "2023-02-24T22:43:54.998Z",
-      "updated_at": "2023-02-24T22:56:25.852Z"
+      "weight": 0.2
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 3,
     "fields": {
+      "web_id": "a77ed302-f71f-4b44-955f-2022a96ccb2d",
+      "created_at": "2023-02-27T18:56:39.441Z",
+      "updated_at": "2023-02-27T18:56:39.441Z",
       "sku": "12233334",
       "upc": "asdasdkg",
       "product_type": 8,
@@ -54,15 +59,16 @@
       "retail_price": "55.00",
       "store_price": "120.00",
       "sale_price": "110.00",
-      "weight": 0.3,
-      "created_at": "2023-02-27T18:56:39.441Z",
-      "updated_at": "2023-02-27T18:56:39.441Z"
+      "weight": 0.3
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 4,
     "fields": {
+      "web_id": "06b15993-1787-4c9a-a63a-82e6b14d34a4",
+      "created_at": "2023-02-27T18:58:03.148Z",
+      "updated_at": "2023-02-27T18:58:03.148Z",
       "sku": "12",
       "upc": "as",
       "product_type": 9,
@@ -74,15 +80,16 @@
       "retail_price": "60.00",
       "store_price": "170.00",
       "sale_price": "169.00",
-      "weight": 0.3,
-      "created_at": "2023-02-27T18:58:03.148Z",
-      "updated_at": "2023-02-27T18:58:03.148Z"
+      "weight": 0.3
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 5,
     "fields": {
+      "web_id": "436b88d4-1d35-4745-87f2-2efa765cd619",
+      "created_at": "2023-02-27T19:01:25.142Z",
+      "updated_at": "2023-02-27T19:01:25.142Z",
       "sku": "75",
       "upc": "fddfh",
       "product_type": 12,
@@ -94,15 +101,16 @@
       "retail_price": "20.00",
       "store_price": "35.00",
       "sale_price": "30.00",
-      "weight": 0.6,
-      "created_at": "2023-02-27T19:01:25.142Z",
-      "updated_at": "2023-02-27T19:01:25.142Z"
+      "weight": 0.6
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 6,
     "fields": {
+      "web_id": "3532f4b1-43f0-4873-8f0b-b1b0e6c3016b",
+      "created_at": "2023-02-27T19:02:27.167Z",
+      "updated_at": "2023-02-27T19:02:27.167Z",
       "sku": "3432",
       "upc": "asdsa",
       "product_type": 11,
@@ -114,15 +122,16 @@
       "retail_price": "10.00",
       "store_price": "20.00",
       "sale_price": "15.00",
-      "weight": 0.2,
-      "created_at": "2023-02-27T19:02:27.167Z",
-      "updated_at": "2023-02-27T19:02:27.167Z"
+      "weight": 0.2
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 7,
     "fields": {
+      "web_id": "b850d771-7d42-419c-9d44-c27779928363",
+      "created_at": "2023-02-27T19:06:12.699Z",
+      "updated_at": "2023-02-27T19:06:12.699Z",
       "sku": "6334364",
       "upc": "glkhqt",
       "product_type": 13,
@@ -134,15 +143,16 @@
       "retail_price": "160.00",
       "store_price": "190.00",
       "sale_price": "180.00",
-      "weight": 0.7,
-      "created_at": "2023-02-27T19:06:12.699Z",
-      "updated_at": "2023-02-27T19:06:12.699Z"
+      "weight": 0.7
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 8,
     "fields": {
+      "web_id": "4a0c2eda-cfa8-4cb9-acad-05c225dbd3fc",
+      "created_at": "2023-02-27T19:07:05.362Z",
+      "updated_at": "2023-02-27T19:07:05.362Z",
       "sku": "02983",
       "upc": "fgklköfgh",
       "product_type": 10,
@@ -154,15 +164,16 @@
       "retail_price": "6.00",
       "store_price": "9.00",
       "sale_price": "8.00",
-      "weight": 0.05,
-      "created_at": "2023-02-27T19:07:05.362Z",
-      "updated_at": "2023-02-27T19:07:05.362Z"
+      "weight": 0.05
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 9,
     "fields": {
+      "web_id": "6480498c-c450-4e12-ab10-2c803b810712",
+      "created_at": "2023-02-27T19:08:27.659Z",
+      "updated_at": "2023-02-27T19:08:27.660Z",
       "sku": "8746",
       "upc": "ghdfs",
       "product_type": 14,
@@ -174,15 +185,16 @@
       "retail_price": "60.00",
       "store_price": "90.00",
       "sale_price": "70.00",
-      "weight": 3.5,
-      "created_at": "2023-02-27T19:08:27.659Z",
-      "updated_at": "2023-02-27T19:08:27.660Z"
+      "weight": 3.5
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 10,
     "fields": {
+      "web_id": "f79d1e29-29b4-4728-8293-acce31e6b46f",
+      "created_at": "2023-02-27T19:10:06.280Z",
+      "updated_at": "2023-02-27T19:10:06.280Z",
       "sku": "0245",
       "upc": "asdk",
       "product_type": 15,
@@ -194,15 +206,16 @@
       "retail_price": "40.00",
       "store_price": "60.00",
       "sale_price": "30.00",
-      "weight": 0.35,
-      "created_at": "2023-02-27T19:10:06.280Z",
-      "updated_at": "2023-02-27T19:10:06.280Z"
+      "weight": 0.35
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 11,
     "fields": {
+      "web_id": "8a0b393f-94bf-4035-9e5b-256a9c7c8823",
+      "created_at": "2023-02-27T19:10:59.599Z",
+      "updated_at": "2023-02-27T19:10:59.599Z",
       "sku": "5373416",
       "upc": "sjrfg",
       "product_type": 16,
@@ -214,15 +227,16 @@
       "retail_price": "20.00",
       "store_price": "30.00",
       "sale_price": "25.00",
-      "weight": 0.2,
-      "created_at": "2023-02-27T19:10:59.599Z",
-      "updated_at": "2023-02-27T19:10:59.599Z"
+      "weight": 0.2
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 12,
     "fields": {
+      "web_id": "5bd7322a-b49a-4d57-b269-e20c09e74a90",
+      "created_at": "2023-02-27T19:12:57.262Z",
+      "updated_at": "2023-02-27T19:12:57.262Z",
       "sku": "0932",
       "upc": "jsfgdk",
       "product_type": 17,
@@ -234,15 +248,16 @@
       "retail_price": "20.00",
       "store_price": "40.00",
       "sale_price": "30.00",
-      "weight": 0.4,
-      "created_at": "2023-02-27T19:12:57.262Z",
-      "updated_at": "2023-02-27T19:12:57.262Z"
+      "weight": 0.4
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 13,
     "fields": {
+      "web_id": "ea9155dd-234d-4901-9bdb-577eb94282c1",
+      "created_at": "2023-02-27T19:14:02.889Z",
+      "updated_at": "2023-02-27T19:14:02.889Z",
       "sku": "90023",
       "upc": "siad",
       "product_type": 6,
@@ -254,15 +269,16 @@
       "retail_price": "600.00",
       "store_price": "900.00",
       "sale_price": "850.00",
-      "weight": 0.2,
-      "created_at": "2023-02-27T19:14:02.889Z",
-      "updated_at": "2023-02-27T19:14:02.889Z"
+      "weight": 0.2
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 14,
     "fields": {
+      "web_id": "88c44c6c-1071-4858-bf20-3814ce61ccab",
+      "created_at": "2023-02-27T19:15:32.424Z",
+      "updated_at": "2023-02-27T19:15:32.424Z",
       "sku": "04359",
       "upc": "sdkfldsf",
       "product_type": 6,
@@ -274,15 +290,16 @@
       "retail_price": "300.00",
       "store_price": "500.00",
       "sale_price": "400.00",
-      "weight": 0.2,
-      "created_at": "2023-02-27T19:15:32.424Z",
-      "updated_at": "2023-02-27T19:15:32.424Z"
+      "weight": 0.2
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 15,
     "fields": {
+      "web_id": "f5a9ccfc-ba65-4e2e-b941-db4bcde053e8",
+      "created_at": "2023-02-27T19:17:22.659Z",
+      "updated_at": "2023-02-27T19:17:22.659Z",
       "sku": "90239",
       "upc": "dsfk",
       "product_type": 18,
@@ -294,15 +311,16 @@
       "retail_price": "40.00",
       "store_price": "60.00",
       "sale_price": "50.00",
-      "weight": 1.0,
-      "created_at": "2023-02-27T19:17:22.659Z",
-      "updated_at": "2023-02-27T19:17:22.659Z"
+      "weight": 1.0
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 16,
     "fields": {
+      "web_id": "e53f0cb2-5b34-4774-8848-6bd4ade4a63c",
+      "created_at": "2023-02-27T19:18:29.177Z",
+      "updated_at": "2023-02-27T19:18:29.177Z",
       "sku": "00202",
       "upc": "llllllsss",
       "product_type": 8,
@@ -314,15 +332,16 @@
       "retail_price": "100.00",
       "store_price": "150.00",
       "sale_price": "125.00",
-      "weight": 0.1,
-      "created_at": "2023-02-27T19:18:29.177Z",
-      "updated_at": "2023-02-27T19:18:29.177Z"
+      "weight": 0.1
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 17,
     "fields": {
+      "web_id": "0479bd93-1d11-4924-91b2-53c46711ef44",
+      "created_at": "2023-02-27T20:44:37.623Z",
+      "updated_at": "2023-02-27T20:44:37.624Z",
       "sku": "923090",
       "upc": "kjsdl",
       "product_type": 9,
@@ -334,15 +353,16 @@
       "retail_price": "70.00",
       "store_price": "100.00",
       "sale_price": "80.00",
-      "weight": 0.3,
-      "created_at": "2023-02-27T20:44:37.623Z",
-      "updated_at": "2023-02-27T20:44:37.624Z"
+      "weight": 0.3
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 18,
     "fields": {
+      "web_id": "f822e2ae-5367-4cb9-a429-195de8d5040b",
+      "created_at": "2023-02-27T20:47:14.664Z",
+      "updated_at": "2023-02-27T20:47:14.664Z",
       "sku": "9023423",
       "upc": "jaksdkas",
       "product_type": 19,
@@ -354,15 +374,16 @@
       "retail_price": "5.00",
       "store_price": "20.00",
       "sale_price": "16.00",
-      "weight": 0.33,
-      "created_at": "2023-02-27T20:47:14.664Z",
-      "updated_at": "2023-02-27T20:47:14.664Z"
+      "weight": 0.33
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 19,
     "fields": {
+      "web_id": "492c5085-327f-438e-be12-3330f95a9ca3",
+      "created_at": "2023-02-27T20:49:12.649Z",
+      "updated_at": "2023-02-27T20:49:12.649Z",
       "sku": "923492",
       "upc": "qweier",
       "product_type": 20,
@@ -374,15 +395,16 @@
       "retail_price": "29.00",
       "store_price": "69.00",
       "sale_price": "59.00",
-      "weight": 0.2,
-      "created_at": "2023-02-27T20:49:12.649Z",
-      "updated_at": "2023-02-27T20:49:12.649Z"
+      "weight": 0.2
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 20,
     "fields": {
+      "web_id": "d2d79611-7a2f-4458-a3e8-ef0fbf0e6c81",
+      "created_at": "2023-02-27T20:51:12.608Z",
+      "updated_at": "2023-02-27T20:51:12.608Z",
       "sku": "90230",
       "upc": "jksadl",
       "product_type": 13,
@@ -394,15 +416,16 @@
       "retail_price": "39.00",
       "store_price": "99.00",
       "sale_price": "89.00",
-      "weight": 0.5,
-      "created_at": "2023-02-27T20:51:12.608Z",
-      "updated_at": "2023-02-27T20:51:12.608Z"
+      "weight": 0.5
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 21,
     "fields": {
+      "web_id": "708098eb-fd90-44a7-b1fd-d671660b200a",
+      "created_at": "2023-02-27T20:53:41.197Z",
+      "updated_at": "2023-02-27T20:53:41.197Z",
       "sku": "83924",
       "upc": "jksald",
       "product_type": 21,
@@ -414,15 +437,16 @@
       "retail_price": "333.00",
       "store_price": "999.00",
       "sale_price": "333.00",
-      "weight": 0.6,
-      "created_at": "2023-02-27T20:53:41.197Z",
-      "updated_at": "2023-02-27T20:53:41.197Z"
+      "weight": 0.6
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 22,
     "fields": {
+      "web_id": "0fc71d90-1636-4682-a98b-a860faa96112",
+      "created_at": "2023-02-27T20:55:33.454Z",
+      "updated_at": "2023-02-27T20:56:00.139Z",
       "sku": "908412",
       "upc": "lhlfjkjaf",
       "product_type": 20,
@@ -434,15 +458,16 @@
       "retail_price": "80.00",
       "store_price": "90.00",
       "sale_price": "85.00",
-      "weight": 0.8,
-      "created_at": "2023-02-27T20:55:33.454Z",
-      "updated_at": "2023-02-27T20:56:00.139Z"
+      "weight": 0.8
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 23,
     "fields": {
+      "web_id": "a964c083-f1f1-492c-b9a6-d08f8126c757",
+      "created_at": "2023-02-27T20:57:46.628Z",
+      "updated_at": "2023-02-27T20:57:46.628Z",
       "sku": "90245",
       "upc": "jafjkghg",
       "product_type": 22,
@@ -454,15 +479,16 @@
       "retail_price": "999.00",
       "store_price": "999.00",
       "sale_price": "999.00",
-      "weight": 0.4,
-      "created_at": "2023-02-27T20:57:46.628Z",
-      "updated_at": "2023-02-27T20:57:46.628Z"
+      "weight": 0.4
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 24,
     "fields": {
+      "web_id": "6918ee34-5532-4718-90ca-1bec9ed1bfd3",
+      "created_at": "2023-02-27T20:59:04.277Z",
+      "updated_at": "2023-02-27T20:59:04.277Z",
       "sku": "4783195",
       "upc": "gjafds",
       "product_type": 22,
@@ -474,15 +500,16 @@
       "retail_price": "999.00",
       "store_price": "999.00",
       "sale_price": "999.00",
-      "weight": 1.0,
-      "created_at": "2023-02-27T20:59:04.277Z",
-      "updated_at": "2023-02-27T20:59:04.277Z"
+      "weight": 1.0
     }
   },
   {
     "model": "inventory.productinventory",
     "pk": 25,
     "fields": {
+      "web_id": "c7bba61f-7c0c-4f1d-a2e0-929e0ccbcb32",
+      "created_at": "2023-02-27T21:04:44.890Z",
+      "updated_at": "2023-02-27T21:04:44.891Z",
       "sku": "28574",
       "upc": "ksdf",
       "product_type": 23,
@@ -494,9 +521,7 @@
       "retail_price": "180.00",
       "store_price": "240.00",
       "sale_price": "205.00",
-      "weight": 1.8,
-      "created_at": "2023-02-27T21:04:44.890Z",
-      "updated_at": "2023-02-27T21:04:44.891Z"
+      "weight": 1.8
     }
   }
 ]

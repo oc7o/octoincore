@@ -1,6 +1,5 @@
 import datetime
 import typing
-import uuid
 from decimal import Decimal
 
 import strawberry
@@ -8,6 +7,7 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from strawberry.file_uploads import Upload
 
+from octoincore.permission import IsAuthenticated
 from octoincore.types import JSON
 from octoincore.users.models import ExtendUser
 
@@ -84,44 +84,50 @@ def get_pagination_window(
 
 @strawberry.django.type(model=ProductAttribute)
 class ProductAttributeType:
+    web_id: str
     name: str
 
 
 @strawberry.django.type(model=Brand)
 class BrandType:
+    web_id: str
     name: str
-    slug: str
 
 
 @strawberry.django.type(model=ProductAttributeValue)
 class ProductAttributeValueType:
+    web_id: str
     product_attribute: ProductAttributeType
     attribute_value: str
 
 
 @strawberry.django.type(model=Media)
 class MediaType:
-    img_url: str
+    web_id: str
+    image: str
 
 
 @strawberry.django.type(model=ProductTypeModel)
 class ProductTypeType:
+    web_id: str
     name: str
 
 
 @strawberry.input
 class MediaInputType:
-    img_url: Upload
+    image: Upload
 
 
 @strawberry.django.type(model=Category)
 class CategoryType:
+    web_id: str
     name: str
     slug: str
 
 
 @strawberry.django.type(model=ProductInventory)
 class ProductInventoryType:
+    web_id: str
     sku: str
     upc: str
     is_active: bool
@@ -136,10 +142,10 @@ class ProductInventoryType:
     @strawberry.field
     def product_images(self, info) -> typing.List[MediaType]:
         images = []
-        for media in self.media_product_inventory.all():
+        for media in self.media_files.all():
             images.append(
                 MediaType(
-                    img_url=info.context.request.build_absolute_uri(media.img_url.url)
+                    image=info.context.request.build_absolute_uri(media.image.url)
                 )
             )
         return images
@@ -163,46 +169,30 @@ class ProductType:
     is_active: bool
     created_at: str
     updated_at: str
-    product: typing.List[ProductInventoryType]
+    inventories: typing.List[ProductInventoryType]
     owner: typing.Annotated["UserType", strawberry.lazy("octoincore.users.schema")]
 
     @strawberry.field
     def starting_from_price(self, info) -> Decimal:
-        if self.product.order_by("store_price").first() is not None:
-            minimal_price = self.product.order_by("store_price").first().store_price
+        if self.inventories.order_by("store_price").first() is not None:
+            minimal_price = self.inventories.order_by("store_price").first().store_price
         else:
             minimal_price = Decimal(0)
         return minimal_price
 
     @strawberry.field
     def default_image(self, info) -> typing.Optional[MediaType]:
-        if self.product.first() is not None:
-            if self.product.first().media_product_inventory.first() is not None:
-                media = self.product.first().media_product_inventory.first()
+        if self.inventories.exists():
+            if self.inventories.first().media_files.exists():
+                media = self.inventories.first().media_files.first()
                 return MediaType(
-                    img_url=info.context.request.build_absolute_uri(media.img_url.url),
+                    image=info.context.request.build_absolute_uri(media.image.url),
                 )
         return None
 
 
-# def resolve_products():
-#     return Product.objects.all()
-
-
 @strawberry.type
 class InventoryQuery:
-    # products: typing.List[ProductType] = strawberry.django.field()
-
-    # @strawberry.field
-    # def products(
-    #     self,
-    #     info: strawberry.types.Info,
-    #     user: str | None = None,
-    #     search: str | None = None,
-    #     category: str | None = None,
-    # ) -> typing.List[ProductType]:
-    #     return Product.objects.all()
-
     @strawberry.field
     def products(
         self,
@@ -230,25 +220,23 @@ class InventoryQuery:
             filters=filters,
         )
 
-    @strawberry.field
+    @strawberry.field(permission_classes=[IsAuthenticated])
     def me_products(
         self,
         info: strawberry.types.Info,
         limit: int = 20,
         offset: int = 0,
     ) -> PaginationWindow[ProductType] | None:
-        if info.context.request.user.is_authenticated:
-            filters = {}
-            filters["user"] = info.context.request.user.username
+        filters = {}
+        filters["user"] = info.context.request.user.username
 
-            return get_pagination_window(
-                dataset=Product.objects.all(),
-                ItemType=ProductType,
-                limit=limit,
-                offset=offset,
-                filters=filters,
-            )
-        raise Exception("User is not authenticated")
+        return get_pagination_window(
+            dataset=Product.objects.all(),
+            ItemType=ProductType,
+            limit=limit,
+            offset=offset,
+            filters=filters,
+        )
 
     @strawberry.field
     def categories(
@@ -274,24 +262,24 @@ class InventoryQuery:
             return None
 
     @strawberry.field
-    def product_inventory_by_sku(
-        self, info: strawberry.types.Info, sku: str
+    def inventory_by_web_id(
+        self, info: strawberry.types.Info, web_id: str
     ) -> typing.Optional[ProductInventoryType]:
         try:
-            return ProductInventory.objects.get(sku=sku)
+            return ProductInventory.objects.get(web_id=web_id)
         except ProductInventory.DoesNotExist:
             return None
 
     @strawberry.field
-    def product_inventories_by_skus(
-        self, info: strawberry.types.Info, skus: typing.List[str]
+    def inventories_by_web_ids(
+        self, info: strawberry.types.Info, web_ids: typing.List[str]
     ) -> typing.List[ProductInventoryType]:
-        return ProductInventory.objects.filter(sku__in=skus)
+        return ProductInventory.objects.filter(sku__in=web_ids)
 
 
 @strawberry.type
 class InventoryMutation:
-    @strawberry.mutation
+    @strawberry.mutation(permission_classes=[IsAuthenticated])
     def create_product(
         self,
         info: strawberry.types.Info,
@@ -299,80 +287,71 @@ class InventoryMutation:
         description: str,
         category: str,
     ) -> ProductType:
-        if info.context.request.user.is_authenticated:
-            product = Product.objects.create(
-                name=name,
-                description=description,
-                is_active=False,
-                web_id=uuid.uuid4().hex[:16],
-                owner=info.context.request.user,
-            )
-            product.category.add(Category.objects.get(slug=category))
-            return product
-        raise Exception("User is not authenticated")
+        product = Product.objects.create(
+            name=name,
+            description=description,
+            is_active=False,
+            owner=info.context.request.user,
+        )
+        product.category.add(Category.objects.get(slug=category))
+        return product
 
-    @strawberry.mutation
+    @strawberry.mutation(permission_classes=[IsAuthenticated])
     def create_product_inventory(
         self,
         info: strawberry.types.Info,
-        product: str,
+        product_web_id: str,
         store_price: Decimal,
         is_active: bool | None = False,
         is_default: bool | None = False,
         weight: Decimal | None = None,
-        # retail_price: Decimal,
         # sale_price: Decimal,
         media: typing.List[MediaInputType] | None = None,
-        brand: str | None = None,
-        product_type: str | None = None,
+        brand_web_id: str | None = None,
+        product_type_web_id: str | None = None,
         attribute_values: JSON | None = None,
     ) -> ProductInventoryType:
-        if info.context.request.user.is_authenticated:
-            product_inventory = ProductInventory()
-            product_inventory.product = Product.objects.get(web_id=product)
-            product_inventory.sku = uuid.uuid4().hex[:16]
-            product_inventory.is_active = is_active
-            product_inventory.is_default = is_default
-            product_inventory.weight = weight
-            # product_inventory.retail_price = retail_price
-            product_inventory.store_price = store_price
-            # product_inventory.sale_price = sale_price
-            if brand is not None:
-                product_inventory.brand = Brand.objects.get(slug=brand)
-            if product_type is not None:
-                product_inventory.product_type = ProductTypeModel.objects.get(
-                    name=product_type
-                )
-            product_inventory.save()
-            if media is not None:
-                Media.objects.bulk_create(
-                    [
-                        Media(
-                            img_url=m.img_url,
-                            product_inventory=product_inventory,
-                        )
-                        for m in media
-                    ]
-                )
-            # if attribute_values is not None:
-            #     for attribute_value in attribute_values:
-            #         ProductAttributeValue.objects.create(
-            #             product_inventory=product_inventory,
-            #             product_attribute=ProductAttribute.objects.get(
-            #                 slug=attribute_value.product_attribute
-            #             ),
-            #             attribute_value=attribute_value.attribute_value,
-            #         )
-            return product_inventory
-        raise Exception("User is not authenticated")
+        product_inventory = ProductInventory()
+        product_inventory.product = Product.objects.get(web_id=product_web_id)
+        product_inventory.is_active = is_active
+        product_inventory.is_default = is_default
+        product_inventory.weight = weight
+        # product_inventory.retail_price = retail_price
+        product_inventory.store_price = store_price
+        # product_inventory.sale_price = sale_price
+        if brand_web_id is not None:
+            product_inventory.brand = Brand.objects.get(web_id=brand_web_id)
+        if product_type_web_id is not None:
+            product_inventory.product_type = ProductTypeModel.objects.get(
+                web_id=product_type_web_id
+            )
+        product_inventory.save()
+        if media is not None:
+            Media.objects.bulk_create(
+                [
+                    Media(
+                        image=m.image,
+                        product_inventory=product_inventory,
+                    )
+                    for m in media
+                ]
+            )
+        # if attribute_values is not None:
+        #     for attribute_value in attribute_values:
+        #         ProductAttributeValue.objects.create(
+        #             product_inventory=product_inventory,
+        #             product_attribute=ProductAttribute.objects.get(
+        #                 slug=attribute_value.product_attribute
+        #             ),
+        #             attribute_value=attribute_value.attribute_value,
+        #         )
+        return product_inventory
 
-    @strawberry.mutation
+    @strawberry.mutation(permission_classes=[IsAuthenticated])
     def delete_product_inventory(
         self,
         info: strawberry.types.Info,
-        sku: str,
+        web_id: str,
     ) -> bool:
-        if info.context.request.user.is_authenticated:
-            ProductInventory.objects.filter(sku=sku).delete()
-            return True
-        raise Exception("User is not authenticated")
+        ProductInventory.objects.filter(web_id=web_id).delete()
+        return True

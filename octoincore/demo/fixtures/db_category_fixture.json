@@ -3,6 +3,9 @@
     "model": "inventory.category",
     "pk": 1,
     "fields": {
+      "web_id": "c7eab607-6d13-459c-b1cd-ebca58fc58ff",
+      "created_at": "2023-05-09T09:54:15.477Z",
+      "updated_at": "2023-05-09T09:54:15.477Z",
       "name": "Wearables & Accessoires",
       "slug": "wearables_and_accessoires",
       "is_active": true,
@@ -17,6 +20,9 @@
     "model": "inventory.category",
     "pk": 2,
     "fields": {
+      "web_id": "a10f3025-99b4-4927-b431-fc79758fc2a3",
+      "created_at": "2023-05-09T09:54:15.491Z",
+      "updated_at": "2023-05-09T09:54:15.491Z",
       "name": "Food & Supplements",
       "slug": "food_and_supplements",
       "is_active": true,
@@ -31,6 +37,9 @@
     "model": "inventory.category",
     "pk": 3,
     "fields": {
+      "web_id": "33531d00-81b6-49fa-8812-42d69ec835f6",
+      "created_at": "2023-05-09T09:54:15.495Z",
+      "updated_at": "2023-05-09T09:54:15.495Z",
       "name": "Cosmentics",
       "slug": "cosmentics",
       "is_active": true,
@@ -45,6 +54,9 @@
     "model": "inventory.category",
     "pk": 4,
     "fields": {
+      "web_id": "e38b7032-45bd-44b0-bd89-8e187c7efc5f",
+      "created_at": "2023-05-09T09:54:15.498Z",
+      "updated_at": "2023-05-09T09:54:15.498Z",
       "name": "Deko",
       "slug": "deko",
       "is_active": true,
@@ -59,6 +71,9 @@
     "model": "inventory.category",
     "pk": 5,
     "fields": {
+      "web_id": "78fea8aa-5a7e-4fcd-8ed4-738fce62de54",
+      "created_at": "2023-05-09T09:54:15.502Z",
+      "updated_at": "2023-05-09T09:54:15.502Z",
       "name": "Tech",
       "slug": "tech",
       "is_active": true,
@@ -73,6 +88,9 @@
     "model": "inventory.category",
     "pk": 6,
     "fields": {
+      "web_id": "3b5e8950-f765-4edf-855f-2d88b06b311f",
+      "created_at": "2023-05-09T09:54:15.505Z",
+      "updated_at": "2023-05-09T09:54:15.505Z",
       "name": "Other",
       "slug": "other",
       "is_active": true,

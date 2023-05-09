@@ -1,22 +1,27 @@
 from django.db import models
 
+from octoincore.models import OctoModel
 
-class Captcha(models.Model):
+
+class Captcha(OctoModel):
     """
     Captcha model
     """
 
-    captcha = models.CharField(max_length=255)
-    created = models.DateTimeField(auto_now_add=True)
-    web_id = models.CharField(max_length=255, unique=True)
+    text = models.CharField(max_length=255)
 
-    # expires = models.DateTimeField()
+    # expires = models.DateTimeField() # TODO: add expires field
     image = models.ImageField(
-        upload_to="uploads/captchas/", default="defaults/placeholder.png",
+        upload_to="uploads/captchas/",
+        default="defaults/placeholder.png",
     )
 
+    # TODO: Why?
     def create(self, *args, **kwargs):
         self.save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.web_id} - {self.text}"
 
     def __unicode__(self):
         return self.captcha
@@ -25,4 +30,3 @@ class Captcha(models.Model):
         db_table = "captcha"
         verbose_name = "Captcha"
         verbose_name_plural = "Captchas"
-

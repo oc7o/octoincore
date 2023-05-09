@@ -3,14 +3,13 @@
     "model": "inventory.product",
     "pk": 1,
     "fields": {
+      "web_id": "2cf96551-5e62-4b48-83d2-c971d7af5eec",
+      "created_at": "2023-02-24T22:39:57.335Z",
+      "updated_at": "2023-02-24T22:39:57.335Z",
       "owner": 2,
-      "web_id": "1_web_id",
-      "slug": "classic_watch",
       "name": "Classic Watch",
       "description": "This is a normal but cool watch.",
       "is_active": true,
-      "created_at": "2023-02-24T22:39:57.335Z",
-      "updated_at": "2023-02-24T22:39:57.335Z",
       "category": [1]
     }
   },
@@ -18,14 +17,13 @@
     "model": "inventory.product",
     "pk": 2,
     "fields": {
+      "web_id": "3a254a6e-298e-47e9-aa51-b9d03d3d45e8",
+      "created_at": "2023-02-27T18:38:22.212Z",
+      "updated_at": "2023-02-27T18:38:27.824Z",
       "owner": 3,
-      "web_id": "2_web_id",
-      "slug": "smart_watch",
       "name": "Smart Watch",
       "description": "A modern way of tracking time (and much more).",
       "is_active": true,
-      "created_at": "2023-02-27T18:38:22.212Z",
-      "updated_at": "2023-02-27T18:38:27.824Z",
       "category": [5, 1]
     }
   },
@@ -33,14 +31,13 @@
     "model": "inventory.product",
     "pk": 3,
     "fields": {
+      "web_id": "f6bda4a2-fb86-44fe-9343-4a14c71979ae",
+      "created_at": "2023-02-27T18:40:08.454Z",
+      "updated_at": "2023-02-27T18:54:43.306Z",
       "owner": 5,
-      "web_id": "3_web_id",
-      "slug": "headphones",
       "name": "Headphones",
       "description": "High quality headphones for professional music production environments.",
       "is_active": true,
-      "created_at": "2023-02-27T18:40:08.454Z",
-      "updated_at": "2023-02-27T18:54:43.306Z",
       "category": [5]
     }
   },
@@ -48,14 +45,13 @@
     "model": "inventory.product",
     "pk": 4,
     "fields": {
+      "web_id": "ac049aee-5ae9-423c-9f4a-842e23a628ed",
+      "created_at": "2023-02-27T18:42:12.404Z",
+      "updated_at": "2023-02-27T18:42:12.404Z",
       "owner": 8,
-      "web_id": "4_web_id",
-      "slug": "old_camera",
       "name": "Old camera with film",
       "description": "Old camera with actually working film.\r\nNever used it myself.",
       "is_active": true,
-      "created_at": "2023-02-27T18:42:12.404Z",
-      "updated_at": "2023-02-27T18:42:12.404Z",
       "category": [5]
     }
   },
@@ -63,14 +59,13 @@
     "model": "inventory.product",
     "pk": 5,
     "fields": {
+      "web_id": "78aba25a-ecd0-438c-9fea-2e858f4a9769",
+      "created_at": "2023-02-27T18:43:33.602Z",
+      "updated_at": "2023-02-27T18:43:33.602Z",
       "owner": 6,
-      "web_id": "5_web_id",
-      "slug": "sun_glasses",
       "name": "Sun Glasses",
       "description": "Don't really know the brand but don't like them and was a gift.",
       "is_active": true,
-      "created_at": "2023-02-27T18:43:33.602Z",
-      "updated_at": "2023-02-27T18:43:33.602Z",
       "category": [1]
     }
   },
@@ -78,14 +73,13 @@
     "model": "inventory.product",
     "pk": 6,
     "fields": {
+      "web_id": "7fdd7455-8fd4-46b4-a941-d6ed5cdddb4e",
+      "created_at": "2023-02-27T18:44:38.601Z",
+      "updated_at": "2023-02-27T18:44:38.601Z",
       "owner": 3,
-      "web_id": "6_web_id",
-      "slug": "lip_stick",
       "name": "Lip Stick",
       "description": "Idk. it's just a beautiful lip stick.",
       "is_active": true,
-      "created_at": "2023-02-27T18:44:38.601Z",
-      "updated_at": "2023-02-27T18:44:38.601Z",
       "category": [3]
     }
   },
@@ -93,14 +87,13 @@
     "model": "inventory.product",
     "pk": 7,
     "fields": {
+      "web_id": "12821135-f520-4cba-aee9-501ed6d64370",
+      "created_at": "2023-02-27T18:46:12.417Z",
+      "updated_at": "2023-02-27T18:46:12.417Z",
       "owner": 4,
-      "web_id": "7_web_id",
-      "slug": "stool",
       "name": "Wooden Stool",
       "description": "Self made wooden stool.",
       "is_active": true,
-      "created_at": "2023-02-27T18:46:12.417Z",
-      "updated_at": "2023-02-27T18:46:12.417Z",
       "category": [4]
     }
   },
@@ -108,14 +101,13 @@
     "model": "inventory.product",
     "pk": 8,
     "fields": {
+      "web_id": "9384a02e-1cc5-4f9c-afb6-649f58ef288e",
+      "created_at": "2023-02-27T18:46:57.860Z",
+      "updated_at": "2023-02-27T18:46:57.860Z",
       "owner": 2,
-      "web_id": "8_web_id",
-      "slug": "pant",
       "name": "Plant",
       "description": "🪴",
       "is_active": true,
-      "created_at": "2023-02-27T18:46:57.860Z",
-      "updated_at": "2023-02-27T18:46:57.860Z",
       "category": [4]
     }
   },
@@ -123,14 +115,13 @@
     "model": "inventory.product",
     "pk": 9,
     "fields": {
+      "web_id": "f3334358-bbbd-43fd-81aa-d9fc29e1818c",
+      "created_at": "2023-02-27T18:48:07.522Z",
+      "updated_at": "2023-02-27T18:48:07.523Z",
       "owner": 6,
-      "web_id": "9_web_id",
-      "slug": "toy_car",
       "name": "Toy Car",
       "description": "🚙",
       "is_active": true,
-      "created_at": "2023-02-27T18:48:07.522Z",
-      "updated_at": "2023-02-27T18:48:07.523Z",
       "category": [4]
     }
   },
@@ -138,14 +129,13 @@
     "model": "inventory.product",
     "pk": 10,
     "fields": {
+      "web_id": "53561504-dfe1-4be0-a4c7-b54c18f1ea47",
+      "created_at": "2023-02-27T18:49:26.034Z",
+      "updated_at": "2023-02-27T18:49:26.034Z",
       "owner": 8,
-      "web_id": "10_web_id",
-      "slug": "bottle",
       "name": "Bottle",
       "description": "You can use it to drink (only if liquid is inside).\r\n\r\nImportant: liquid is not included in shipment!",
       "is_active": true,
-      "created_at": "2023-02-27T18:49:26.034Z",
-      "updated_at": "2023-02-27T18:49:26.034Z",
       "category": [2]
     }
   },
@@ -153,14 +143,13 @@
     "model": "inventory.product",
     "pk": 11,
     "fields": {
+      "web_id": "0bda86be-5634-4cc5-b324-debe45ceace3",
+      "created_at": "2023-02-27T18:50:28.990Z",
+      "updated_at": "2023-02-27T18:50:28.990Z",
       "owner": 3,
-      "web_id": "11_web_id",
-      "slug": "coffee",
       "name": "Tasty Coffee",
       "description": "It's special coffee.\r\nWanna know why?\r\nBuy it!",
       "is_active": true,
-      "created_at": "2023-02-27T18:50:28.990Z",
-      "updated_at": "2023-02-27T18:50:28.990Z",
       "category": [2]
     }
   },
@@ -168,14 +157,13 @@
     "model": "inventory.product",
     "pk": 12,
     "fields": {
+      "web_id": "edf8a416-6e02-484a-a737-9ed937826229",
+      "created_at": "2023-02-27T18:51:26.336Z",
+      "updated_at": "2023-02-27T18:51:26.336Z",
       "owner": 5,
-      "web_id": "12_web_id",
-      "slug": "shower_gel",
       "name": "Shower Gel",
       "description": "Smells goog 😉",
       "is_active": true,
-      "created_at": "2023-02-27T18:51:26.336Z",
-      "updated_at": "2023-02-27T18:51:26.336Z",
       "category": [3]
     }
   },
@@ -183,14 +171,13 @@
     "model": "inventory.product",
     "pk": 13,
     "fields": {
+      "web_id": "fd7574da-56ef-4c21-a46b-0aedc93113f5",
+      "created_at": "2023-02-27T18:52:18.035Z",
+      "updated_at": "2023-02-27T18:52:18.035Z",
       "owner": 4,
-      "web_id": "13_web_id",
-      "slug": "gaming_stuff",
       "name": "Gaming Stuff",
       "description": "Playstation is better than XBox!",
       "is_active": true,
-      "created_at": "2023-02-27T18:52:18.035Z",
-      "updated_at": "2023-02-27T18:52:18.035Z",
       "category": [5]
     }
   },
@@ -198,14 +185,13 @@
     "model": "inventory.product",
     "pk": 14,
     "fields": {
+      "web_id": "43031905-9708-4947-83fd-714dd82cacce",
+      "created_at": "2023-02-27T18:53:18.539Z",
+      "updated_at": "2023-02-27T18:53:18.539Z",
       "owner": 7,
-      "web_id": "14_web_id",
-      "slug": "deko",
       "name": "Deko",
       "description": "What is this?",
       "is_active": true,
-      "created_at": "2023-02-27T18:53:18.539Z",
-      "updated_at": "2023-02-27T18:53:18.539Z",
       "category": [4]
     }
   },
@@ -213,14 +199,13 @@
     "model": "inventory.product",
     "pk": 15,
     "fields": {
+      "web_id": "8b0a7a08-fd0a-4501-9133-f02e8963af3f",
+      "created_at": "2023-02-27T18:54:01.384Z",
+      "updated_at": "2023-02-27T18:54:01.384Z",
       "owner": 7,
-      "web_id": "15_web_id",
-      "slug": "phone",
       "name": "Phone",
       "description": "Use it to call.",
       "is_active": true,
-      "created_at": "2023-02-27T18:54:01.384Z",
-      "updated_at": "2023-02-27T18:54:01.384Z",
       "category": [5]
     }
   },
@@ -228,14 +213,13 @@
     "model": "inventory.product",
     "pk": 16,
     "fields": {
+      "web_id": "ab8f3ee0-41ba-4fb5-973c-f323558f3efe",
+      "created_at": "2023-02-27T19:05:08.561Z",
+      "updated_at": "2023-02-27T19:05:08.561Z",
       "owner": 2,
-      "web_id": "16_web_id",
-      "slug": "shoe",
       "name": "Shoe",
       "description": "This is one and the same shoe product line even if they look slightly different...",
       "is_active": true,
-      "created_at": "2023-02-27T19:05:08.561Z",
-      "updated_at": "2023-02-27T19:05:08.561Z",
       "category": [1]
     }
   },
@@ -243,14 +227,13 @@
     "model": "inventory.product",
     "pk": 17,
     "fields": {
+      "web_id": "fcf5c81e-630f-4fe8-b9d6-1e9b14310f3c",
+      "created_at": "2023-02-27T21:02:42.384Z",
+      "updated_at": "2023-02-27T21:02:51.978Z",
       "owner": 6,
-      "web_id": "17_web_id",
-      "slug": "work_starter_pack",
       "name": "Work Starter Pack",
       "description": "Base of creativity.",
       "is_active": true,
-      "created_at": "2023-02-27T21:02:42.384Z",
-      "updated_at": "2023-02-27T21:02:51.978Z",
       "category": [6]
     }
   }

@@ -58,10 +58,8 @@ INSTALLED_APPS = [
     "django_filters",
     "mptt",
     "storages",
-    # "mathfilters",
     # local apps
     "octoincore.users",
-    "octoincore.dashboard",
     "octoincore.inventory",
     "octoincore.payments",
     "octoincore.basket",

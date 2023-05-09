@@ -2,25 +2,81 @@
   {
     "model": "inventory.brand",
     "pk": 1,
-    "fields": { "name": "CARLSON BRAND" }
+    "fields": {
+      "web_id": "9e95ed2c-3bbc-43af-acd4-84103fa5b7d2",
+      "created_at": "2023-05-09T09:54:15.331Z",
+      "updated_at": "2023-05-09T09:54:15.331Z",
+      "name": "CARLSON BRAND"
+    }
   },
   {
     "model": "inventory.brand",
     "pk": 2,
-    "fields": { "name": "REQ_ONE BRAND" }
+    "fields": {
+      "web_id": "35058ba3-a20c-4451-88bb-8771397fde54",
+      "created_at": "2023-05-09T09:54:15.350Z",
+      "updated_at": "2023-05-09T09:54:15.350Z",
+      "name": "REQ_ONE BRAND"
+    }
   },
-  { "model": "inventory.brand", "pk": 3, "fields": { "name": "TEQNIQ BRAND" } },
-  { "model": "inventory.brand", "pk": 4, "fields": { "name": "ZRAY BRAND" } },
-  { "model": "inventory.brand", "pk": 5, "fields": { "name": "UFUK BRAND" } },
-  { "model": "inventory.brand", "pk": 6, "fields": { "name": "TREND BRAND" } },
+  {
+    "model": "inventory.brand",
+    "pk": 3,
+    "fields": {
+      "web_id": "9b9a4799-0759-48d3-b793-515b49a4397c",
+      "created_at": "2023-05-09T09:54:15.354Z",
+      "updated_at": "2023-05-09T09:54:15.354Z",
+      "name": "TEQNIQ BRAND"
+    }
+  },
+  {
+    "model": "inventory.brand",
+    "pk": 4,
+    "fields": {
+      "web_id": "e40b4e04-ce69-4240-8385-4374f7139a8c",
+      "created_at": "2023-05-09T09:54:15.357Z",
+      "updated_at": "2023-05-09T09:54:15.357Z",
+      "name": "ZRAY BRAND"
+    }
+  },
+  {
+    "model": "inventory.brand",
+    "pk": 5,
+    "fields": {
+      "web_id": "60f19588-e9d9-4db0-b880-ea0677a63d4c",
+      "created_at": "2023-05-09T09:54:15.360Z",
+      "updated_at": "2023-05-09T09:54:15.360Z",
+      "name": "UFUK BRAND"
+    }
+  },
+  {
+    "model": "inventory.brand",
+    "pk": 6,
+    "fields": {
+      "web_id": "b31f8a4a-e945-49d6-8886-322169ac1235",
+      "created_at": "2023-05-09T09:54:15.363Z",
+      "updated_at": "2023-05-09T09:54:15.363Z",
+      "name": "TREND BRAND"
+    }
+  },
   {
     "model": "inventory.brand",
     "pk": 7,
-    "fields": { "name": "FORTUNE RAGE BRAND" }
+    "fields": {
+      "web_id": "de05826c-fb1d-40b9-b1e5-567b47c54f0c",
+      "created_at": "2023-05-09T09:54:15.367Z",
+      "updated_at": "2023-05-09T09:54:15.367Z",
+      "name": "FORTUNE RAGE BRAND"
+    }
   },
   {
     "model": "inventory.brand",
     "pk": 8,
-    "fields": { "name": "RR TOOLS BRAND" }
+    "fields": {
+      "web_id": "85e87eed-1e5e-40f8-9459-77a1caf98cb6",
+      "created_at": "2023-05-09T09:54:15.371Z",
+      "updated_at": "2023-05-09T09:54:15.371Z",
+      "name": "RR TOOLS BRAND"
+    }
   }
 ]

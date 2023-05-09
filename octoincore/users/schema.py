@@ -7,10 +7,9 @@ import strawberry
 import strawberry_django_jwt.mutations as jwt_mutations
 from django.db.models import Count
 
+from octoincore.permission import IsAuthenticated
+
 from .models import ExtendUser
-
-# from octoincore.inventory.schema import ProductType
-
 
 if typing.TYPE_CHECKING:
     from octoincore.inventory.schema import ProductType
@@ -47,7 +46,7 @@ class UserType:
 
 @strawberry.type
 class UserQuery:
-    @strawberry.field
+    @strawberry.field()
     def me(self, info) -> Optional[MeType]:
         if info.context.request.user.is_authenticated:
             return MeType(
@@ -71,7 +70,7 @@ class UserQuery:
     def top_20_users(self, info) -> List[UserType]:
         top_users = sorted(
             ExtendUser.objects.all(),
-            key=lambda x: x.amount_earned_this_month(),
+            key=lambda x: x.amount_earned_this_month,
             reverse=True,
         )[:20]
 
@@ -88,7 +87,7 @@ class UserQuery:
                         user.profile_image.url
                     ),
                     products=user.products.all(),
-                    amount_earned_this_month=user.amount_earned_this_month(),
+                    amount_earned_this_month=user.amount_earned_this_month,
                 )
             )
         return top_user_types

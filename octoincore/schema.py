@@ -14,7 +14,6 @@ from strawberry_django_jwt.middleware import JSONWebTokenMiddleware
 
 from octoincore.basket.schema import BasketMutation, BasketQuery
 from octoincore.captcha.schema import CaptchaMutation
-from octoincore.dashboard.schema import DashboardQuery
 from octoincore.inventory.models import Product
 from octoincore.inventory.schema import InventoryMutation, InventoryQuery
 from octoincore.payments.schema import PaymentsMutation, PaymentsQuery
@@ -40,13 +39,13 @@ class MyJSONWebTokenMiddleware(JSONWebTokenMiddleware):
     def resolve(self, _next, root, info: GraphQLResolveInfo, *args, **kwargs):
         try:
             return super().resolve(_next, root, info, *args, **kwargs)
-        except (exceptions.JSONWebTokenError):
+        except exceptions.JSONWebTokenError:
             result = _next(root, info, **kwargs)
             return result
 
 
 Query = merge_types(
-    "RootQuery", (UserQuery, DashboardQuery, InventoryQuery, PaymentsQuery, BasketQuery)
+    "RootQuery", (UserQuery, InventoryQuery, PaymentsQuery, BasketQuery)
 )
 Mutation = merge_types(
     "RootMutation",

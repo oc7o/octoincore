@@ -2,11 +2,23 @@
   {
     "model": "inventory.productattributevalue",
     "pk": 1,
-    "fields": { "product_attribute": 1, "attribute_value": "Dark" }
+    "fields": {
+      "web_id": "a419e731-6adc-4d2b-9682-63a69a9d1eaf",
+      "created_at": "2023-05-09T09:54:16.613Z",
+      "updated_at": "2023-05-09T09:54:16.613Z",
+      "product_attribute": 1,
+      "attribute_value": "Dark"
+    }
   },
   {
     "model": "inventory.productattributevalue",
     "pk": 2,
-    "fields": { "product_attribute": 1, "attribute_value": "Bright" }
+    "fields": {
+      "web_id": "1952ab96-1ce6-4344-9e03-bce077724adf",
+      "created_at": "2023-05-09T09:54:16.626Z",
+      "updated_at": "2023-05-09T09:54:16.626Z",
+      "product_attribute": 1,
+      "attribute_value": "Bright"
+    }
   }
 ]

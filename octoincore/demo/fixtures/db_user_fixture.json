@@ -1,6 +1,25 @@
 [
   {
     "model": "users.extenduser",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$ErqydMeN80hpFzw3rkiTRs$0IQle7S6fsWhfOBCht8ztxBqa3DfiMMUocgjjU5Q7ZI=",
+      "last_login": "2023-05-08T22:08:04.372Z",
+      "is_superuser": true,
+      "username": "oc7o",
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-05-08T22:03:56.318Z",
+      "email": "elias@sloow.de",
+      "profile_image": "defaults/profile_image.png",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.extenduser",
     "pk": 2,
     "fields": {
       "password": "pbkdf2_sha256$260000$ta1aEuzxYNXDapypcK8DeA$9SSsiimsWiGYWn9XK6SMWfhAvkzUVPMazswSBMCeDc4=",

@@ -1,12 +1,13 @@
 from django.db import models
 
+from octoincore.models import OctoModel
 
-class BasketObject(models.Model):
+
+class BasketObject(OctoModel):
     """
     BasketObject model
     """
 
-    web_id = models.CharField(max_length=255, unique=True)
     basket = models.ForeignKey(
         "basket.Basket",
         on_delete=models.CASCADE,
@@ -22,8 +23,9 @@ class BasketObject(models.Model):
         related_name="baskets",
     )
     quantity = models.IntegerField(default=1)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.product_inventory.product.name} - {self.quantity}"
 
     def __unicode__(self):
         return self.basket_object_id
@@ -34,20 +36,14 @@ class BasketObject(models.Model):
         verbose_name_plural = "BasketObjects"
 
 
-class Basket(models.Model):
+class Basket(OctoModel):
     """
     Basket model
     """
 
-    web_id = models.CharField(max_length=255, unique=True)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
     locked = models.BooleanField(default=False)
 
-    # user = models.ForeignKey(
-    #     "users.User", on_delete=models.CASCADE, null=True, blank=True
-    # )
-
+    @property
     def total_price(self):
         total = 0
         for basket_object in self.basket_objects.all():
@@ -56,6 +52,7 @@ class Basket(models.Model):
             )
         return total
 
+    @property
     def total_qty(self):
         total = 0
         for basket_object in self.basket_objects.all():

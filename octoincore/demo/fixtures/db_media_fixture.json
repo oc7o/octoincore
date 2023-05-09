@@ -3,336 +3,364 @@
     "model": "inventory.media",
     "pk": 1,
     "fields": {
-      "product_inventory": 2,
-      "img_url": "defaults/product_images/20.jpg",
-      "alt_text": "Watch Bright",
-      "is_feature": false,
+      "web_id": "eb681a33-d1ed-493a-bb00-85b8874d36f5",
       "created_at": "2023-02-24T22:42:52.375Z",
-      "updated_at": "2023-02-27T22:35:49.961Z"
+      "updated_at": "2023-02-27T22:35:49.961Z",
+      "product_inventory": 2,
+      "image": "defaults/product_images/20.jpg",
+      "alt_text": "Watch Bright",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 2,
     "fields": {
-      "product_inventory": 1,
-      "img_url": "defaults/product_images/23.jpeg",
-      "alt_text": "Watch Dark",
-      "is_feature": false,
+      "web_id": "419c5f4e-ee67-4b47-b4b4-77862b17c25d",
       "created_at": "2023-02-24T22:45:21.840Z",
-      "updated_at": "2023-02-24T22:46:17.066Z"
+      "updated_at": "2023-02-24T22:46:17.066Z",
+      "product_inventory": 1,
+      "image": "defaults/product_images/23.jpeg",
+      "alt_text": "Watch Dark",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 3,
     "fields": {
-      "product_inventory": 14,
-      "img_url": "defaults/product_images/1.jpg",
-      "alt_text": "Smart Watch Not Apple",
-      "is_feature": false,
+      "web_id": "e6cde4cb-a30e-4438-88f5-6146eceeb6b9",
       "created_at": "2023-02-27T19:19:23.745Z",
-      "updated_at": "2023-02-27T19:19:23.745Z"
+      "updated_at": "2023-02-27T19:19:23.745Z",
+      "product_inventory": 14,
+      "image": "defaults/product_images/1.jpg",
+      "alt_text": "Smart Watch Not Apple",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 4,
     "fields": {
-      "product_inventory": 13,
-      "img_url": "defaults/product_images/11.jpg",
-      "alt_text": "Smart Watch Apple",
-      "is_feature": false,
+      "web_id": "324f6be9-ea89-4634-94d4-c2ff682fc261",
       "created_at": "2023-02-27T19:19:53.023Z",
-      "updated_at": "2023-02-27T19:19:53.023Z"
+      "updated_at": "2023-02-27T19:19:53.023Z",
+      "product_inventory": 13,
+      "image": "defaults/product_images/11.jpg",
+      "alt_text": "Smart Watch Apple",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 5,
     "fields": {
-      "product_inventory": 4,
-      "img_url": "defaults/product_images/2.jpg",
-      "alt_text": "Headphones Black",
-      "is_feature": false,
+      "web_id": "2253c9c1-d348-40db-9a33-e292404fd7ce",
       "created_at": "2023-02-27T19:20:30.790Z",
-      "updated_at": "2023-02-27T19:20:30.790Z"
+      "updated_at": "2023-02-27T19:20:30.790Z",
+      "product_inventory": 4,
+      "image": "defaults/product_images/2.jpg",
+      "alt_text": "Headphones Black",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 6,
     "fields": {
-      "product_inventory": 5,
-      "img_url": "defaults/product_images/3.jpg",
-      "alt_text": "Old Camera",
-      "is_feature": false,
+      "web_id": "fcd9fe8a-9924-4de2-83cc-38456fb22897",
       "created_at": "2023-02-27T19:20:59.732Z",
-      "updated_at": "2023-02-27T19:20:59.733Z"
+      "updated_at": "2023-02-27T19:20:59.733Z",
+      "product_inventory": 5,
+      "image": "defaults/product_images/3.jpg",
+      "alt_text": "Old Camera",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 7,
     "fields": {
-      "product_inventory": 6,
-      "img_url": "defaults/product_images/4.jpg",
-      "alt_text": "Sun Glasses",
-      "is_feature": false,
+      "web_id": "63656691-c795-4524-bad4-c41490fdfec9",
       "created_at": "2023-02-27T19:21:18.360Z",
-      "updated_at": "2023-02-27T19:21:18.360Z"
+      "updated_at": "2023-02-27T19:21:18.360Z",
+      "product_inventory": 6,
+      "image": "defaults/product_images/4.jpg",
+      "alt_text": "Sun Glasses",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 8,
     "fields": {
-      "product_inventory": 7,
-      "img_url": "defaults/product_images/5.jpg",
-      "alt_text": "Shoe Elegant",
-      "is_feature": false,
+      "web_id": "d9196285-6100-4dfa-b776-00f3afbb2716",
       "created_at": "2023-02-27T19:22:24.930Z",
-      "updated_at": "2023-02-27T19:22:24.930Z"
+      "updated_at": "2023-02-27T19:22:24.930Z",
+      "product_inventory": 7,
+      "image": "defaults/product_images/5.jpg",
+      "alt_text": "Shoe Elegant",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 9,
     "fields": {
-      "product_inventory": 8,
-      "img_url": "defaults/product_images/6.jpg",
-      "alt_text": "Lip Stick",
-      "is_feature": false,
+      "web_id": "60e3654d-01fc-4103-a021-f05b4ee3f38c",
       "created_at": "2023-02-27T19:22:47.275Z",
-      "updated_at": "2023-02-27T19:22:47.275Z"
+      "updated_at": "2023-02-27T19:22:47.275Z",
+      "product_inventory": 8,
+      "image": "defaults/product_images/6.jpg",
+      "alt_text": "Lip Stick",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 10,
     "fields": {
-      "product_inventory": 9,
-      "img_url": "defaults/product_images/7.jpg",
-      "alt_text": "Wooden Stool",
-      "is_feature": false,
+      "web_id": "3453e651-c6d9-4781-a315-36bc1b8b63bb",
       "created_at": "2023-02-27T19:23:08.599Z",
-      "updated_at": "2023-02-27T19:23:08.599Z"
+      "updated_at": "2023-02-27T19:23:08.599Z",
+      "product_inventory": 9,
+      "image": "defaults/product_images/7.jpg",
+      "alt_text": "Wooden Stool",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 11,
     "fields": {
-      "product_inventory": 10,
-      "img_url": "defaults/product_images/8.jpg",
-      "alt_text": "Plant",
-      "is_feature": false,
+      "web_id": "8278d595-cddd-4889-9d2c-080fb61e330d",
       "created_at": "2023-02-27T19:23:22.832Z",
-      "updated_at": "2023-02-27T19:23:22.832Z"
+      "updated_at": "2023-02-27T19:23:22.832Z",
+      "product_inventory": 10,
+      "image": "defaults/product_images/8.jpg",
+      "alt_text": "Plant",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 12,
     "fields": {
-      "product_inventory": 11,
-      "img_url": "defaults/product_images/9.jpg",
-      "alt_text": "Toy Car",
-      "is_feature": false,
+      "web_id": "50475950-3b67-465b-9e81-63dbdaf09ce5",
       "created_at": "2023-02-27T19:23:34.511Z",
-      "updated_at": "2023-02-27T19:23:34.511Z"
+      "updated_at": "2023-02-27T19:23:34.511Z",
+      "product_inventory": 11,
+      "image": "defaults/product_images/9.jpg",
+      "alt_text": "Toy Car",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 13,
     "fields": {
-      "product_inventory": 12,
-      "img_url": "defaults/product_images/10.jpg",
-      "alt_text": "Turquoise Bottle",
-      "is_feature": false,
+      "web_id": "722904a1-e5b3-40e0-b97e-00bad6198cc3",
       "created_at": "2023-02-27T19:24:23.638Z",
-      "updated_at": "2023-02-27T19:24:23.638Z"
+      "updated_at": "2023-02-27T19:24:23.638Z",
+      "product_inventory": 12,
+      "image": "defaults/product_images/10.jpg",
+      "alt_text": "Turquoise Bottle",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 14,
     "fields": {
-      "product_inventory": 17,
-      "img_url": "defaults/product_images/12.jpg",
-      "alt_text": "Headphones Cable",
-      "is_feature": false,
+      "web_id": "3e002258-bf98-45e2-b610-0aff46984704",
       "created_at": "2023-02-27T20:44:59.377Z",
-      "updated_at": "2023-02-27T20:44:59.377Z"
+      "updated_at": "2023-02-27T20:44:59.377Z",
+      "product_inventory": 17,
+      "image": "defaults/product_images/12.jpg",
+      "alt_text": "Headphones Cable",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 15,
     "fields": {
-      "product_inventory": 15,
-      "img_url": "defaults/product_images/13.jpg",
-      "alt_text": "Tasty Coffee Pack",
-      "is_feature": false,
+      "web_id": "6a9e7dd4-1718-4ea4-9610-f4f8c007bc92",
       "created_at": "2023-02-27T20:45:52.015Z",
-      "updated_at": "2023-02-27T20:45:52.015Z"
+      "updated_at": "2023-02-27T20:45:52.015Z",
+      "product_inventory": 15,
+      "image": "defaults/product_images/13.jpg",
+      "alt_text": "Tasty Coffee Pack",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 16,
     "fields": {
-      "product_inventory": 18,
-      "img_url": "defaults/product_images/14.jpg",
-      "alt_text": "Shower Gel",
-      "is_feature": false,
+      "web_id": "f1e68506-d13c-4c73-af93-055a483964e3",
       "created_at": "2023-02-27T20:47:33.261Z",
-      "updated_at": "2023-02-27T20:47:33.261Z"
+      "updated_at": "2023-02-27T20:47:33.261Z",
+      "product_inventory": 18,
+      "image": "defaults/product_images/14.jpg",
+      "alt_text": "Shower Gel",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 17,
     "fields": {
-      "product_inventory": 19,
-      "img_url": "defaults/product_images/15.jpg",
-      "alt_text": "XBox Controller",
-      "is_feature": false,
+      "web_id": "a23ee516-ac40-43fc-aa9f-771b42c71494",
       "created_at": "2023-02-27T20:49:32.565Z",
-      "updated_at": "2023-02-27T20:49:32.565Z"
+      "updated_at": "2023-02-27T20:49:32.565Z",
+      "product_inventory": 19,
+      "image": "defaults/product_images/15.jpg",
+      "alt_text": "XBox Controller",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 18,
     "fields": {
-      "product_inventory": 20,
-      "img_url": "defaults/product_images/16.jpg",
-      "alt_text": "Sneakers",
-      "is_feature": false,
+      "web_id": "524a57ac-7a2c-481c-86f2-802ad446b9a9",
       "created_at": "2023-02-27T20:51:23.851Z",
-      "updated_at": "2023-02-27T20:51:23.851Z"
+      "updated_at": "2023-02-27T20:51:23.851Z",
+      "product_inventory": 20,
+      "image": "defaults/product_images/16.jpg",
+      "alt_text": "Sneakers",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 19,
     "fields": {
-      "product_inventory": 3,
-      "img_url": "defaults/product_images/17.jpg",
-      "alt_text": "Beatz By Dre",
-      "is_feature": false,
+      "web_id": "c09953a1-3f6c-4ccc-a2a9-15e49287f9a2",
       "created_at": "2023-02-27T20:51:36.671Z",
-      "updated_at": "2023-02-27T20:51:36.671Z"
+      "updated_at": "2023-02-27T20:51:36.671Z",
+      "product_inventory": 3,
+      "image": "defaults/product_images/17.jpg",
+      "alt_text": "Beatz By Dre",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 20,
     "fields": {
-      "product_inventory": 16,
-      "img_url": "defaults/product_images/18.jpg",
-      "alt_text": "Airpods",
-      "is_feature": false,
+      "web_id": "0cd33ad6-07ce-4aec-b162-dc4d2c443ce9",
       "created_at": "2023-02-27T20:51:51.824Z",
-      "updated_at": "2023-02-27T20:51:51.824Z"
+      "updated_at": "2023-02-27T20:51:51.824Z",
+      "product_inventory": 16,
+      "image": "defaults/product_images/18.jpg",
+      "alt_text": "Airpods",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 21,
     "fields": {
-      "product_inventory": 21,
-      "img_url": "defaults/product_images/19.jpg",
-      "alt_text": "Useless Deko",
-      "is_feature": false,
+      "web_id": "9b52eb20-4f51-4437-be70-2bdc430c0d8d",
       "created_at": "2023-02-27T20:53:57.656Z",
-      "updated_at": "2023-02-27T20:53:57.657Z"
+      "updated_at": "2023-02-27T20:53:57.657Z",
+      "product_inventory": 21,
+      "image": "defaults/product_images/19.jpg",
+      "alt_text": "Useless Deko",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 22,
     "fields": {
-      "product_inventory": 22,
-      "img_url": "defaults/product_images/21.jpg",
-      "alt_text": "Gameboy!!11!",
-      "is_feature": false,
+      "web_id": "b3c2b8c5-da61-42a9-89d7-5160a3a7047e",
       "created_at": "2023-02-27T20:56:20.593Z",
-      "updated_at": "2023-02-27T20:56:20.593Z"
+      "updated_at": "2023-02-27T20:56:20.593Z",
+      "product_inventory": 22,
+      "image": "defaults/product_images/21.jpg",
+      "alt_text": "Gameboy!!11!",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 23,
     "fields": {
-      "product_inventory": 23,
-      "img_url": "defaults/product_images/22.jpg",
-      "alt_text": "iPhone",
-      "is_feature": false,
+      "web_id": "3f1111da-ef4a-4184-b76b-7fe4f6ed17c6",
       "created_at": "2023-02-27T20:57:58.895Z",
-      "updated_at": "2023-02-27T20:57:58.895Z"
+      "updated_at": "2023-02-27T20:57:58.895Z",
+      "product_inventory": 23,
+      "image": "defaults/product_images/22.jpg",
+      "alt_text": "iPhone",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 24,
     "fields": {
-      "product_inventory": 24,
-      "img_url": "defaults/product_images/25.jpeg",
-      "alt_text": "Vintage Phone",
-      "is_feature": false,
+      "web_id": "b0ced6bf-8224-4892-937e-27c0ab8dc1b7",
       "created_at": "2023-02-27T20:59:18.605Z",
-      "updated_at": "2023-02-27T20:59:18.605Z"
+      "updated_at": "2023-02-27T20:59:18.605Z",
+      "product_inventory": 24,
+      "image": "defaults/product_images/25.jpeg",
+      "alt_text": "Vintage Phone",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 25,
     "fields": {
-      "product_inventory": 15,
-      "img_url": "defaults/product_images/26.jpeg",
-      "alt_text": "The Product",
-      "is_feature": false,
+      "web_id": "681dc11f-342c-4bc4-83c0-8dfd2ec1a5e8",
       "created_at": "2023-02-27T20:59:36.621Z",
-      "updated_at": "2023-02-27T20:59:36.621Z"
+      "updated_at": "2023-02-27T20:59:36.621Z",
+      "product_inventory": 15,
+      "image": "defaults/product_images/26.jpeg",
+      "alt_text": "The Product",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 26,
     "fields": {
-      "product_inventory": 5,
-      "img_url": "defaults/product_images/27.jpeg",
-      "alt_text": "Camera Film",
-      "is_feature": false,
+      "web_id": "131ec8ff-4eb0-499e-8046-3693df70377b",
       "created_at": "2023-02-27T21:00:11.002Z",
-      "updated_at": "2023-02-27T21:00:11.002Z"
+      "updated_at": "2023-02-27T21:00:11.002Z",
+      "product_inventory": 5,
+      "image": "defaults/product_images/27.jpeg",
+      "alt_text": "Camera Film",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 27,
     "fields": {
-      "product_inventory": 13,
-      "img_url": "defaults/product_images/28.jpeg",
-      "alt_text": "Apple Watch on arm",
-      "is_feature": false,
+      "web_id": "5acaed96-b793-4d7a-aacd-75d0c59bc7b0",
       "created_at": "2023-02-27T21:00:37.123Z",
-      "updated_at": "2023-02-27T21:00:37.123Z"
+      "updated_at": "2023-02-27T21:00:37.123Z",
+      "product_inventory": 13,
+      "image": "defaults/product_images/28.jpeg",
+      "alt_text": "Apple Watch on arm",
+      "is_feature": false
     }
   },
   {
     "model": "inventory.media",
     "pk": 28,
     "fields": {
-      "product_inventory": 25,
-      "img_url": "defaults/product_images/24.jpeg",
-      "alt_text": "Work Starter Pack",
-      "is_feature": false,
+      "web_id": "b76ee94d-5db8-4101-bd35-5580ea88b6e2",
       "created_at": "2023-02-27T21:04:58.030Z",
-      "updated_at": "2023-02-27T21:04:58.031Z"
+      "updated_at": "2023-02-27T21:04:58.031Z",
+      "product_inventory": 25,
+      "image": "defaults/product_images/24.jpeg",
+      "alt_text": "Work Starter Pack",
+      "is_feature": false
     }
   }
 ]

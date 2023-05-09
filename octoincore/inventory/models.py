@@ -1,9 +1,10 @@
 from django.conf import settings
 from django.db import models
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from mptt.models import MPTTModel, TreeForeignKey, TreeManyToManyField
 
-# from octoincore.inventory.schema import ProductType
+from octoincore.models import OctoModel
 from octoincore.users.models import ExtendUser
 
 ################
@@ -21,7 +22,7 @@ class ProductInventoryManager(models.Manager):
 ##############
 ### Models ###
 ##############
-class Category(MPTTModel):
+class Category(MPTTModel, OctoModel):
     """
     Inventory Category table implemented with MPTT
     """
@@ -38,10 +39,11 @@ class Category(MPTTModel):
     slug = models.SlugField(
         max_length=150,
         null=False,
-        unique=False,
+        unique=True,
         blank=False,
         verbose_name=_("category safe URL"),
         help_text=_("format: required, letters, numbers, underscore or hyphens"),
+        default=slugify(name),
     )
 
     is_active = models.BooleanField(default=True)
@@ -68,7 +70,7 @@ class Category(MPTTModel):
         return self.name
 
 
-class Product(models.Model):
+class Product(OctoModel):
     """
     Product details table
     """
@@ -77,22 +79,6 @@ class Product(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="products"
     )
 
-    web_id = models.CharField(
-        max_length=50,
-        unique=True,
-        null=False,
-        blank=False,
-        verbose_name=_("product website ID"),
-        help_text=_("format: required, unique"),
-    )
-    slug = models.SlugField(
-        max_length=255,
-        unique=False,
-        null=False,
-        blank=False,
-        verbose_name=_("product safe URL"),
-        help_text=_("format: required, letters, numbers, underscores or hyphens"),
-    )
     name = models.CharField(
         max_length=255,
         unique=False,
@@ -117,23 +103,12 @@ class Product(models.Model):
         verbose_name=_("product visibility"),
         help_text=_("format: true=product visible"),
     )
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        editable=False,
-        verbose_name=_("date product created"),
-        help_text=_("format: Y-m-d H:M:S"),
-    )
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        verbose_name=_("date product last updated"),
-        help_text=_("format: Y-m-d H:M:S"),
-    )
 
     def __str__(self):
         return self.name
 
 
-class ProductAttribute(models.Model):
+class ProductAttribute(OctoModel):
     """
     Product attribute table
     """
@@ -158,7 +133,7 @@ class ProductAttribute(models.Model):
         return self.name
 
 
-class ProductType(models.Model):
+class ProductType(OctoModel):
     """
     Product type table
     """
@@ -182,7 +157,7 @@ class ProductType(models.Model):
         return self.name
 
 
-class Brand(models.Model):
+class Brand(OctoModel):
     """
     Product brand table
     """
@@ -200,7 +175,7 @@ class Brand(models.Model):
         return self.name
 
 
-class ProductAttributeValue(models.Model):
+class ProductAttributeValue(OctoModel):
     """
     Product attribute value table
     """
@@ -223,7 +198,7 @@ class ProductAttributeValue(models.Model):
         return f"{self.product_attribute.name} : {self.attribute_value}"
 
 
-class ProductInventory(models.Model):
+class ProductInventory(OctoModel):
     """
     Product inventory table
     """
@@ -231,8 +206,8 @@ class ProductInventory(models.Model):
     sku = models.CharField(
         max_length=20,
         unique=True,
-        null=False,
-        blank=False,
+        null=True,  # False
+        blank=True,  # False
         verbose_name=_("stock keeping unit"),
         help_text=_("format: required, unique, max-20"),
     )
@@ -245,10 +220,10 @@ class ProductInventory(models.Model):
         help_text=_("format: required, unique, max-12"),
     )
     product_type = models.ForeignKey(
-        ProductType, related_name="product_type", on_delete=models.PROTECT
+        ProductType, related_name="inventories", on_delete=models.PROTECT
     )
     product = models.ForeignKey(
-        Product, related_name="product", on_delete=models.PROTECT
+        Product, related_name="inventories", on_delete=models.PROTECT
     )
     describing_keyword = models.CharField(
         blank=True,
@@ -259,7 +234,7 @@ class ProductInventory(models.Model):
     )
     brand = models.ForeignKey(
         Brand,
-        related_name="brand",
+        related_name="inventries",
         on_delete=models.PROTECT,
         null=True,
         blank=True,
@@ -267,7 +242,7 @@ class ProductInventory(models.Model):
     )
     attribute_values = models.ManyToManyField(
         ProductAttributeValue,
-        related_name="product_attribute_values",
+        related_name="inventories",
         through="ProductAttributeValues",
     )
     is_active = models.BooleanField(
@@ -328,17 +303,6 @@ class ProductInventory(models.Model):
         blank=True,
         verbose_name=_("product weight"),
     )
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        editable=False,
-        verbose_name=_("date sub-product created"),
-        help_text=_("format: Y-m-d H:M:S"),
-    )
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        verbose_name=_("date sub-product updated"),
-        help_text=_("format: Y-m-d H:M:S"),
-    )
 
     # products = ProductInventoryManager()
 
@@ -349,7 +313,7 @@ class ProductInventory(models.Model):
         unique_together = ("product", "describing_keyword")
 
 
-class Media(models.Model):
+class Media(OctoModel):
     """
     The product image table.
     """
@@ -357,9 +321,9 @@ class Media(models.Model):
     product_inventory = models.ForeignKey(
         ProductInventory,
         on_delete=models.PROTECT,
-        related_name="media_product_inventory",
+        related_name="media_files",
     )
-    img_url = models.ImageField(
+    image = models.ImageField(
         unique=False,
         null=False,
         blank=False,
@@ -381,17 +345,6 @@ class Media(models.Model):
         verbose_name=_("product default image"),
         help_text=_("format: default=false, true=default image"),
     )
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        editable=False,
-        verbose_name=_("product visibility"),
-        help_text=_("format: Y-m-d H:M:S"),
-    )
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        verbose_name=_("date sub-product created"),
-        help_text=_("format: Y-m-d H:M:S"),
-    )
 
     def __str__(self):
         return self.alt_text
@@ -401,10 +354,10 @@ class Media(models.Model):
         verbose_name_plural = _("product images")
 
 
-class Stock(models.Model):
+class Stock(OctoModel):
     product_inventory = models.OneToOneField(
         ProductInventory,
-        related_name="product_inventory",
+        related_name="stock",
         on_delete=models.PROTECT,
     )
     last_checked = models.DateTimeField(
@@ -473,28 +426,3 @@ class ProductTypeAttribute(models.Model):
 
     class Meta:
         unique_together = (("product_attribute", "product_type"),)
-
-
-# class ProductOrder(models.Model):
-
-#     address = models.CharField(_(""), max_length=50)
-#     postal_code = models.IntegerField()
-#     customer_name = models.CharField(_(""), max_length=50)
-#     product_inventory = models.ManyToManyField(
-#         "ProductInventory", related_name="orders"
-#     )
-
-#     class Meta:
-#         verbose_name = _("Product order")
-
-#     def __str__(self):
-#         return self.name
-
-
-# class ProductRating(models.Model):
-#     class Meta:
-#         verbose_name = _("")
-#         verbose_name_plural = _("s")
-
-#     def __str__(self):
-#         return self.name

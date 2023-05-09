@@ -2,6 +2,12 @@
   {
     "model": "inventory.productattribute",
     "pk": 1,
-    "fields": { "name": "Color", "description": "color of the product" }
+    "fields": {
+      "web_id": "4c6bd89f-11a1-4f78-9782-1d15b8307aa6",
+      "created_at": "2023-05-09T09:54:16.503Z",
+      "updated_at": "2023-05-09T09:54:16.503Z",
+      "name": "Color",
+      "description": "color of the product"
+    }
   }
 ]
