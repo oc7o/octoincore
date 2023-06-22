@@ -63,7 +63,7 @@ class BTCPayClient:
                 "expirationMinutes": 60 * 24,
                 "monitoringMinutes": 60 * 24,
                 "paymentTolerance": 100,
-                "redirectURL": "https://localhost:5173/checkout/done",  # TODO: https://sloow.de/
+                "redirectURL": "http://localhost:5173/checkout/done",  # TODO: https://sloow.de/
                 "redirectAutomatically": True,
                 "requiresRefundEmail": False,
                 "defaultLanguage": "en-US",
