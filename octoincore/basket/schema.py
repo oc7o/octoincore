@@ -62,7 +62,7 @@ class BasketQuery:
             total_price=basket.total_price,
             total_qty=basket.total_qty,
             order=order,
-            vendor_basket_objects=basket.vendor_basket_objects(info),
+            # vendor_basket_objects=basket.vendor_basket_objects(info),
         )
 
 
